@@ -1,0 +1,16 @@
+- !<AssetImportMetadata/fcd1f4fa-e42b-4d95-8bd0-e2026fb1dc3d>
+  ImportedAssetIds:
+    InternetModule: !<reference> 9150d50d-15c0-43cd-8f86-fc42a9510945
+  ImporterName: InternetModuleImporter
+  PrimaryAsset: !<reference> 9150d50d-15c0-43cd-8f86-fc42a9510945
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    {}
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000

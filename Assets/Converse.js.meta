@@ -1,0 +1,44 @@
+- !<AssetImportMetadata/6f557032-bb3f-4f38-a37b-73977b55d81d>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> d0782f8d-aad7-43e2-97d5-f6e0da76db22
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> d0782f8d-aad7-43e2-97d5-f6e0da76db22
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> 80ca4da6-6cdd-43bd-bdac-124830b648e6
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/80ca4da6-6cdd-43bd-bdac-124830b648e6>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 4ba1d899-8932-401b-bd0d-86e4e7f6eab6
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    audio: false
+    textOutput: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - audio: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+      textOutput: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}

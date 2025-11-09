@@ -1,0 +1,13 @@
+- !<AssetCache>
+  AssetFiles:
+    809ef0fc-9198-498a-879c-e3420d5da6e2: 65a30749-93c5-94f9-1ee2-6f3fd136f048/9f398f23e23f230826c68c829e4a0c1d/Data/No-Internet-Alert.png
+  Assets:
+    - !<FileTexture/809ef0fc-9198-498a-879c-e3420d5da6e2>
+      PackagePath: ""
+      FileInfo: !<FileTextureInfo>
+        Width: 1441
+        Height: 1094
+  SourceHash: 9f398f23e23f230826c68c829e4a0c1d
+  FileHash: bdc515bdd121183b4b0aab64db02684a
+  NativePackageItems:
+    []

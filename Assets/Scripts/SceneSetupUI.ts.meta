@@ -1,0 +1,62 @@
+- !<AssetImportMetadata/36d2f238-786d-4c04-bb34-2a33b3886bc8>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> f41adbce-d02f-44b5-aa61-00e66419dc84
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> f41adbce-d02f-44b5-aa61-00e66419dc84
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> c6ed4f7d-9d26-40a7-9f1b-9d92a1a8077e
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/c6ed4f7d-9d26-40a7-9f1b-9d92a1a8077e>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 7575d5ee-7c86-4758-93b3-c969f97a61bb
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    conversationController: false
+    personalityAsrBtn: false
+    personalityField: false
+    physicalAsrBtn: false
+    physicalField: false
+    sceneAsrBtn: false
+    sceneField: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - conversationController: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      physicalField: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      personalityField: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      sceneField: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      physicalAsrBtn: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      personalityAsrBtn: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      sceneAsrBtn: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Component.ScriptComponent conversationController
+    - // @input Component.Text physicalField
+    - // @input Component.Text personalityField
+    - // @input Component.Text sceneField
+    - // @input Component.ScriptComponent physicalAsrBtn
+    - // @input Component.ScriptComponent personalityAsrBtn
+    - // @input Component.ScriptComponent sceneAsrBtn

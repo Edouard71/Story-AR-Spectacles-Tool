@@ -1,0 +1,7 @@
+PinnedEntities:
+  type: uuids
+  value:
+    size: 1
+    values:
+      - 01568e2a-eb8f-4ec3-9ccf-beb9f1654199
+  options: 4

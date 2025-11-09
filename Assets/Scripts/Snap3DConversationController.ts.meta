@@ -1,0 +1,56 @@
+- !<AssetImportMetadata/3372aa39-cb5b-4506-ab1f-5868fb926cb5>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 3bbc4747-488e-4dce-a71a-d0a7a14c534e
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 3bbc4747-488e-4dce-a71a-d0a7a14c534e
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 400f314c-1ef4-4c34-bd23-1c5b1cb59f83
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/400f314c-1ef4-4c34-bd23-1c5b1cb59f83>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: d90179b2-6f97-4cf1-a48e-e372961f42b4
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    failureIndicator: false
+    instantiator: false
+    npcGenerationUI: false
+    npcPrefab: false
+    snap3DFactoryObj: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - snap3DFactoryObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      npcGenerationUI: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      instantiator: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      npcPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      failureIndicator: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input SceneObject snap3DFactoryObj
+    - // @input SceneObject npcGenerationUI
+    - // @input AssignableType instantiator
+    - // @input Asset.ObjectPrefab npcPrefab
+    - // @input Component.Text failureIndicator

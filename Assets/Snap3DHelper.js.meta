@@ -1,0 +1,46 @@
+- !<AssetImportMetadata/a882bbf2-3892-43d1-ad97-8a5b4a0139af>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> 3b12085f-0a13-47ba-9cb1-61e118b8035c
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> 3b12085f-0a13-47ba-9cb1-61e118b8035c
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> af3ca03a-2377-4a36-bd0f-291f08b5cfb2
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/af3ca03a-2377-4a36-bd0f-291f08b5cfb2>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 7630f6cf-8466-4962-8ebe-7c73cace5b5a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    isActive: false
+    prompt: false
+    snap3DFactory: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - snap3DFactory: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      isActive: false
+      prompt: A cute robot holding a pizza
+  ScriptTypes:
+    -
+      {}
