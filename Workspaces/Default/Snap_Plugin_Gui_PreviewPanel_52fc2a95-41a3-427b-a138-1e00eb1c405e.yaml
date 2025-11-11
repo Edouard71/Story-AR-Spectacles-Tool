@@ -8,7 +8,7 @@ cameraType:
   options: 4
 deviceType:
   type: string
-  value: Unknown
+  value: Spectacles
   options: 4
 fpsLogging:
   type: bool
@@ -28,11 +28,11 @@ fullscreenSpectaclesSimulation:
   options: 4
 lastPosition:
   type: vec3
-  value: {x: 0.000000, y: 0.000000, z: 210.050018}
+  value: {x: -9.462517, y: 0.000000, z: 225.869278}
   options: 4
 lastRotation:
   type: vec3
-  value: {x: 0.000000, y: -0.000000, z: 0.000000}
+  value: {x: -5.250022, y: 0.749988, z: -0.000002}
   options: 4
 mirrorHorizontally:
   type: bool

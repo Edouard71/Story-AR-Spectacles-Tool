@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Snap3DInteractable = void 0;
 var __selfType = requireType("./Snap3DInteractable");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 const SyncEntity_1 = require("SpectaclesSyncKit.lspkg/Core/SyncEntity");
 const NetworkIdTools_1 = require("SpectaclesSyncKit.lspkg/Core/NetworkIdTools");
 const NetworkIdType_1 = require("SpectaclesSyncKit.lspkg/Core/NetworkIdType");

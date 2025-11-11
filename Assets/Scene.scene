@@ -1652,10 +1652,10 @@
   PrefabRemaps:
     []
   Name: ContainerNPCGenController
-  Enabled: false
+  Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: -55.000000}
+    Position: {x: -25.000000, y: 0.000000, z: -55.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
@@ -4608,7 +4608,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: -55.000000}
+    Position: {x: 25.000000, y: 0.000000, z: -55.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
@@ -6396,9 +6396,9 @@
     {}
   ScriptInputs:
     "":
-      openAIToken: c64b695d-c50a-4840-a5d1-8c841d387786
+      openAIToken: 8536e98a-8990-47ba-93cc-03c5eb06adb6
       googleToken: "[INSERT GOOGLE TOKEN HERE]"
-      snapToken: 3723c47a-9eba-4d1c-b777-a00550a248d6
+      snapToken: eef6942e-a317-4f92-9b78-a5275cd534ab
   ScriptTypes:
     "":
       {}
@@ -6695,7 +6695,7 @@
     - f6e7d770-13a3-47ae-bc6a-469a67e98184: 7b9480c2-2c09-41e4-7115-72ac41b9a230
     - f9c3a9af-bb95-4f53-bc60-c99605cd7ad1: 784d1d41-31ce-4a77-5b5d-8646a2ace304
   Name: Snap3DInteractable
-  Enabled: false
+  Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: 0.000000, z: -30.000000}
@@ -7337,7 +7337,7 @@
   PrefabRemaps:
     []
   Name: SpeechBubbleDisplay
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: 0.000000, z: 1.000000}
@@ -8078,9 +8078,7 @@
   ScriptInputs:
     "":
       snap3DFactoryObj: !<reference.SceneObject> e2eb5afd-edf7-4812-9570-c323c00660d9
-      propGenerationUI: !<reference.SceneObject> 9157b012-da1a-48fe-8d4d-6bb785e83ea9
       propPrefab: !<reference.ObjectPrefab> 3a9879e2-7189-4795-9fe5-7457fce00c95
-      failureIndicator: !<reference.Text> 062b05f9-cb90-4112-a8ef-422241d375ad
   ScriptTypes:
     "":
       {}

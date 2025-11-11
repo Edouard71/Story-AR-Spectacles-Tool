@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Capsule3D = void 0;
 var __selfType = requireType("./Capsule3D");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 /**
  * The `Capsule` class represents a 3D capsule component in the scene. It extends the `BaseScriptComponent`
  * and provides functionality for rendering and customizing the capsule's appearance.

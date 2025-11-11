@@ -1,7 +1,7 @@
 CollapsedEntities:
   type: stringset
   value:
-    size: 852
+    size: 854
     values:
       - Base.png
       - Converse.js
@@ -34,6 +34,8 @@ CollapsedEntities:
       - Normal.png
       - PBR.mat
       - Prefabs/VoiceInput.prefab
+      - Remote Media Module.remoteMediaModule
+      - RemoteServiceGateway.lspkg
       - RemoteServiceGateway.lspkg/Helpers
       - RemoteServiceGateway.lspkg/Helpers/AudioProcessor.ts
       - RemoteServiceGateway.lspkg/Helpers/DynamicAudioOutput.ts
@@ -101,6 +103,7 @@ CollapsedEntities:
       - Render/Echopark.hdr/Specular
       - Render/Render Target.renderTarget
       - Scene.scene
+      - Scripts
       - Scripts/APIKeyHint.ts
       - Scripts/ASRQueryController.ts
       - Scripts/GeminiAssistant.ts
@@ -538,7 +541,6 @@ CollapsedEntities:
       - SpectaclesInteractionKit.lspkg/VersionNumber.ts
       - SpectaclesInteractionKit.lspkg/package.native
       - SpectaclesInteractionKit.lspkg/tsconfig.json
-      - SpectaclesSyncKit.lspkg
       - SpectaclesSyncKit.lspkg/Assets
       - SpectaclesSyncKit.lspkg/Assets/Animations
       - SpectaclesSyncKit.lspkg/Assets/Animations/Scene.animationAsset

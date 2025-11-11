@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ExampleGeminiLive = void 0;
 var __selfType = requireType("./ExampleGeminiLive");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 const AudioProcessor_1 = require("../../Helpers/AudioProcessor");
 const GoogleGenAI_1 = require("../GoogleGenAI");
 const VideoController_1 = require("../../Helpers/VideoController");

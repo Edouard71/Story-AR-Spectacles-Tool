@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HandInteractor = exports.MINIMUM_PINCH_STRENGTH = exports.FieldTargetingMode = void 0;
 var __selfType = requireType("./HandInteractor");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 const Interactable_1 = require("../../Components/Interaction/Interactable/Interactable");
 const WorldCameraFinderProvider_1 = require("../../Providers/CameraProvider/WorldCameraFinderProvider");
 const HandInputData_1 = require("../../Providers/HandInputData/HandInputData");

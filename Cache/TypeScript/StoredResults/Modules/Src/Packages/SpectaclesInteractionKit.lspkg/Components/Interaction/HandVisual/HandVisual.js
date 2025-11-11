@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HandVisual = exports.HandVisualOverride = exports.HandVisualOverrideItem = exports.HandVisualOverrideType = exports.HandVisualSelection = exports.HandMeshType = void 0;
 var __selfType = requireType("./HandVisual");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 const HandInputData_1 = require("../../../Providers/HandInputData/HandInputData");
 const LensConfig_1 = require("../../../Utils/LensConfig");
 const NativeLogger_1 = require("../../../Utils/NativeLogger");

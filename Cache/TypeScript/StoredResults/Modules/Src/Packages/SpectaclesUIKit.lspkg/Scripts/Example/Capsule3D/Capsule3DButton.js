@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Capsule3DButton = void 0;
 var __selfType = requireType("./Capsule3DButton");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 const NativeLogger_1 = require("SpectaclesInteractionKit.lspkg/Utils/NativeLogger");
 const BaseButton_1 = require("../../Components/Button/BaseButton");
 const SnapOS2_1 = require("../../Themes/SnapOS-2.0/SnapOS2");

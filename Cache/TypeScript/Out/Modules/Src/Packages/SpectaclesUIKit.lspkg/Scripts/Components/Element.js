@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Element = exports.StateName = exports.IMAGE_MATERIAL_ASSET = void 0;
 var __selfType = requireType("./Element");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 const Interactable_1 = require("SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable");
 const HandInteractor_1 = require("SpectaclesInteractionKit.lspkg/Core/HandInteractor/HandInteractor");
 const Interactor_1 = require("SpectaclesInteractionKit.lspkg/Core/Interactor/Interactor");

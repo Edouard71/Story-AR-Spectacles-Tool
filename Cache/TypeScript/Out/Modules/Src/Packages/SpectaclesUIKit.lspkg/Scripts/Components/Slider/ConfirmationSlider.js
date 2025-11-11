@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ConfirmationSlider = void 0;
 var __selfType = requireType("./ConfirmationSlider");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 const animate_1 = require("SpectaclesInteractionKit.lspkg/Utils/animate");
 const Event_1 = require("SpectaclesInteractionKit.lspkg/Utils/Event");
 const NativeLogger_1 = require("SpectaclesInteractionKit.lspkg/Utils/NativeLogger");

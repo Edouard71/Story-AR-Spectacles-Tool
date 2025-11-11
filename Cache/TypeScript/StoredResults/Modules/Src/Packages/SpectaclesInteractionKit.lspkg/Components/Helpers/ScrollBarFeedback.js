@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ScrollBarFeedback = void 0;
 var __selfType = requireType("./ScrollBarFeedback");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 const animate_1 = require("../../Utils/animate");
 const mathUtils_1 = require("../../Utils/mathUtils");
 const validate_1 = require("../../Utils/validate");

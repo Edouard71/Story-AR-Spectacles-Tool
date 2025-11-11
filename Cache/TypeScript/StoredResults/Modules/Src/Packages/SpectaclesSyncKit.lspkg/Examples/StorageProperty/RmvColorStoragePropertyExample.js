@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ColorStoragePropertyExample = void 0;
 var __selfType = requireType("./RmvColorStoragePropertyExample");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 const color_1 = require("SpectaclesInteractionKit.lspkg/Utils/color");
 const StorageProperty_1 = require("../../Core/StorageProperty");
 const StoragePropertySet_1 = require("../../Core/StoragePropertySet");

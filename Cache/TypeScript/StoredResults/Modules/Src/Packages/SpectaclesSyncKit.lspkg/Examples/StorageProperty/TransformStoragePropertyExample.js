@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TransformStoragePropertyExample = void 0;
 var __selfType = requireType("./TransformStoragePropertyExample");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 const PropertyType_1 = require("../../Core/PropertyType");
 const StorageProperty_1 = require("../../Core/StorageProperty");
 const StoragePropertySet_1 = require("../../Core/StoragePropertySet");

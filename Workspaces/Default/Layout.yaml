@@ -14,44 +14,49 @@ dock:
             type: section
             current: 0
         sizes:
-          - 364
-          - 349
+          - 481
+          - 384
         type: splitter
         orientation: vertical
       - items:
           - items:
               - persistentName: Snap.Plugin.Gui.SceneEditor
                 Uuid: a14d85d7-9a15-42a6-913e-3f24dea267c2
-              - persistentName: Snap.Plugin.AssistantAI.Panel
-                Uuid: df91b2cf-37e1-401c-83fc-3d9f83343e71
+              - persistentName: Snap.Plugin.Gui.ConnectedLensMonitorPanel
+                Uuid: 724d113b-8a5c-4071-91d0-06517572c03e
             type: section
-            current: 1
+            current: 0
           - items:
               - persistentName: Snap.Plugin.Gui.LoggerPanel
                 Uuid: 81de965d-0c94-4d28-82cf-901740003a1f
             type: section
             current: 0
         sizes:
-          - 384
-          - 329
+          - 466
+          - 399
         type: splitter
         orientation: vertical
       - items:
-          - persistentName: Snap.Plugin.Gui.InspectorPanel
-            Uuid: 780d9164-e681-4de1-b586-5213ed5523b9
-          - persistentName: Snap.Plugin.Gui.PreviewPanel
-            Uuid: 075f6fb2-7ed2-4a86-818a-662e695735b7
-        type: section
-        current: 1
-      - items:
-          - persistentName: Snap.Plugin.Gui.PreviewPanel
-            Uuid: 52fc2a95-41a3-427b-a138-1e00eb1c405e
-        type: section
-        current: 0
+          - items:
+              - persistentName: Snap.Plugin.Gui.PreviewPanel
+                Uuid: 075f6fb2-7ed2-4a86-818a-662e695735b7
+              - persistentName: Snap.Plugin.Gui.InspectorPanel
+                Uuid: 918838c2-b767-4533-b07e-b2fa51cbed37
+            type: section
+            current: 0
+          - items:
+              - persistentName: Snap.Plugin.Gui.PreviewPanel
+                Uuid: 52fc2a95-41a3-427b-a138-1e00eb1c405e
+            type: section
+            current: 0
+        sizes:
+          - 433
+          - 432
+        type: splitter
+        orientation: vertical
     sizes:
-      - 282
-      - 635
-      - 398
-      - 296
+      - 422
+      - 414
+      - 620
     type: splitter
     orientation: horizontal
