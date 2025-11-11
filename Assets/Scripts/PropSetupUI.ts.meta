@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/e5a869ad-528b-4a6f-87a5-393af316d326>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> fdf10448-230b-4258-a179-e125724250ad
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> fdf10448-230b-4258-a179-e125724250ad
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 3b9e4169-483f-4462-b906-f93c0334eb9b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/3b9e4169-483f-4462-b906-f93c0334eb9b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 7575d5ee-7c86-4758-93b3-c969f97a61bb
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    propController: false
+    propField: false
+    propRecordBtn: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - propController: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      propField: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      propRecordBtn: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Component.ScriptComponent propController
+    - // @input Component.Text propField
+    - // @input Component.ScriptComponent propRecordBtn

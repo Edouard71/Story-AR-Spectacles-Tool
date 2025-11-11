@@ -1,7 +1,7 @@
 CollapsedEntities:
   type: stringset
   value:
-    size: 849
+    size: 852
     values:
       - Base.png
       - Converse.js
@@ -108,9 +108,12 @@ CollapsedEntities:
       - Scripts/InteractableImageGenerator.ts
       - Scripts/InternetAvailabilityPopUp.ts
       - Scripts/OpenAIAssistant.ts
+      - Scripts/PropSetupUI.ts
       - Scripts/SceneSetupUI.ts
       - Scripts/Snap3DConversationController.ts
       - Scripts/Snap3DInteractable.ts
+      - Scripts/Snap3DInteractableFactory.ts
+      - Scripts/Snap3DPropController.ts
       - Scripts/SphereController.ts
       - Snap3DInteractable 2.prefab
       - SpectaclesInteractionKit.lspkg

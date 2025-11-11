@@ -90,7 +90,6 @@ let Snap3DInteractableFactory = (() => {
                 outputObj.name = "Snap3DInteractable - " + input;
                 let snap3DInteractable = outputObj.getComponent(Snap3DInteractable_1.Snap3DInteractable.getTypeName());
                 snap3DInteractable.setPrompt(input);
-                snap3DInteractable.playDialogue("This is the speech bubble!");
                 if (overridePosition) {
                     outputObj.getTransform().setWorldPosition(overridePosition);
                 }

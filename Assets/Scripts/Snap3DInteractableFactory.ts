@@ -53,7 +53,6 @@ export class Snap3DInteractableFactory extends BaseScriptComponent {
       );
       
       snap3DInteractable.setPrompt(input);
-      snap3DInteractable.playDialogue("This is the speech bubble!");
 
       if (overridePosition) {
         outputObj.getTransform().setWorldPosition(overridePosition);
