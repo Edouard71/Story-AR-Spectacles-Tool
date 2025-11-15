@@ -70,6 +70,7 @@ let Snap3DInteractable = (() => {
             this.finalModel = null;
             this.size = 20;
             this.sizeVec = null;
+            this.customNetworkId = null;
         }
         __initialize() {
             super.__initialize();
@@ -88,6 +89,7 @@ let Snap3DInteractable = (() => {
             this.finalModel = null;
             this.size = 20;
             this.sizeVec = null;
+            this.customNetworkId = null;
         }
         onAwake() {
             // Clone the image material to avoid modifying the original
@@ -103,64 +105,60 @@ let Snap3DInteractable = (() => {
             this.img.getTransform().setLocalScale(this.sizeVec);
             // ensure text fields are hidden initially
             this.speechBubbleDisplay.text = "Speech Bubble Placeholder Text";
-            this.setupSyncEntity();
         }
         //----------------------------------------------------------------------
-        // SYNC SETUP
+        // SYNC SETUP — must be called manually after setNetworkId()
         //----------------------------------------------------------------------
-        setupSyncEntity() {
-            // const transform = this.modelParent.getTransform();
-            // const transformProp = StorageProperty.forTransform(
-            //   transform,
-            //   PropertyType.Local,
-            //   PropertyType.Local,
-            //   PropertyType.Local
-            // );
-            // const propSet = new StoragePropertySet([transformProp]);
+        initializeSync() {
+            if (!this.customNetworkId) {
+                print("⚠️ initializeSync() called before setNetworkId()");
+                return;
+            }
             const networkIdOptions = new NetworkIdTools_1.NetworkIdTools.NetworkIdOptions();
             networkIdOptions.networkIdType = NetworkIdType_1.NetworkIdType.Custom;
-            networkIdOptions.customNetworkId = "interactablesync"; // ✅ this string must be the same on all devices
+            networkIdOptions.customNetworkId = this.customNetworkId;
             this.syncEntity = new SyncEntity_1.SyncEntity(this, null, true, "Session", networkIdOptions);
             this.syncEntity.notifyOnReady(() => {
-                print("🪄 SyncEntity ready for transform network events");
-                // 🎧 Always listen for transform updates
+                print(`🪄 SyncEntity ready for ${this.customNetworkId}`);
+                // 🎧 Transform updates
                 this.syncEntity.onEventReceived.add("npcTransformUpdate", (msgInfo) => {
                     const data = msgInfo.data;
                     if (!data)
                         return;
                     const t = this.modelParent.getTransform();
-                    const currentPos = t.getWorldPosition();
-                    const currentRot = t.getWorldRotation();
-                    const currentScale = t.getWorldScale();
-                    // Smooth interpolation
-                    const newPos = vec3.lerp(currentPos, data.pos, 0.25);
-                    const newRot = quat.slerp(currentRot, data.rot, 0.25);
-                    const newScale = data.scale
-                        ? vec3.lerp(currentScale, data.scale, 0.25)
-                        : currentScale;
+                    const newPos = vec3.lerp(t.getWorldPosition(), data.pos, 0.25);
+                    const newRot = quat.slerp(t.getWorldRotation(), data.rot, 0.25);
                     t.setWorldPosition(newPos);
                     t.setWorldRotation(newRot);
-                    t.setWorldScale(newScale);
+                    if (data.scale)
+                        t.setWorldScale(vec3.lerp(t.getWorldScale(), data.scale, 0.25));
                 });
-                // 🎧 Listen for speech updates from host
+                // 🎧 Speech updates
                 this.syncEntity.onEventReceived.add("npcSpeak", (msgInfo) => {
                     const line = msgInfo.data;
-                    if (!line)
-                        return;
-                    print(`🗣️ Received npcSpeak: ${line}`);
-                    this.playDialogue(line);
+                    if (line)
+                        this.playDialogue(line);
                 });
             });
         }
+        setNetworkId(id) {
+            this.customNetworkId = id;
+        }
+        //----------------------------------------------------------------------
+        // TRANSFORM SYNC
+        //----------------------------------------------------------------------
         startTransformSync() {
+            if (!this.syncEntity) {
+                print("⚠️ Cannot start transform sync — no SyncEntity");
+                return;
+            }
             const t = this.modelParent.getTransform();
             this.lastPos = t.getWorldPosition();
             this.lastRot = t.getWorldRotation();
             this.lastScale = t.getWorldScale();
-            const updateInterval = 0.1; // seconds (~10Hz)
+            const updateInterval = 0.1;
             let elapsed = 0;
-            print("🛰️ Starting continuous transform sync broadcast...");
-            // Use Lens Studio's UpdateEvent for smooth timing
+            print(`🛰️ Starting transform sync for ${this.customNetworkId || "interactablesync"}`);
             const updateEvent = this.createEvent("UpdateEvent");
             updateEvent.bind((eventData) => {
                 elapsed += eventData.getDeltaTime();
@@ -170,7 +168,6 @@ let Snap3DInteractable = (() => {
                 const pos = t.getWorldPosition();
                 const rot = t.getWorldRotation();
                 const scale = t.getWorldScale();
-                // Only send when transform changes
                 if (!pos.equal(this.lastPos) || !rot.equal(this.lastRot)) {
                     this.lastPos = pos;
                     this.lastRot = rot;

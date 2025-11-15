@@ -1,7 +1,7 @@
 CollapsedEntities:
   type: stringset
   value:
-    size: 852
+    size: 853
     values:
       - Base.png
       - Converse.js
@@ -34,6 +34,7 @@ CollapsedEntities:
       - Normal.png
       - PBR.mat
       - Prefabs/VoiceInput.prefab
+      - RemoteServiceGateway.lspkg
       - RemoteServiceGateway.lspkg/Helpers
       - RemoteServiceGateway.lspkg/Helpers/AudioProcessor.ts
       - RemoteServiceGateway.lspkg/Helpers/DynamicAudioOutput.ts
@@ -115,7 +116,7 @@ CollapsedEntities:
       - Scripts/Snap3DInteractableFactory.ts
       - Scripts/Snap3DPropController.ts
       - Scripts/SphereController.ts
-      - Snap3DInteractable 2.prefab
+      - Snap3DInteractable.prefab
       - SpectaclesInteractionKit.lspkg
       - SpectaclesInteractionKit.lspkg/Assets
       - SpectaclesInteractionKit.lspkg/Assets/Audio
