@@ -11,6 +11,7 @@ import { StoragePropertySet } from "SpectaclesSyncKit.lspkg/Core/StorageProperty
 export class Snap3DPropController extends BaseScriptComponent {
   @input snap3DFactoryObj: SceneObject;
   @input("Asset.ObjectPrefab") propPrefab: ObjectPrefab;
+  @input propGenerationUI: SceneObject;
 
   private factory: Snap3DInteractableFactory;
   private session: any;
@@ -83,7 +84,18 @@ export class Snap3DPropController extends BaseScriptComponent {
       this.isHost = false;
     }
 
+    if (this.propGenerationUI) {
+      if (this.isHost || this.role === "Singleplayer") {
+        this.propGenerationUI.enabled = true;
+
+      } else {
+        this.propGenerationUI.enabled = false;
+      }
+    }
+
     print(`[PropController] Joined as ${this.role}`);
+
+
   }
 
   //----------------------------------------------------------------------

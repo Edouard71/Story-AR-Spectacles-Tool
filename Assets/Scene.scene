@@ -6,6 +6,7 @@
     - !<own> 1b55a799-781e-4c9b-a064-753ddee7112d
     - !<own> b570b2c7-7ce4-447a-adba-ca35c05a76bd
     - !<own> 2dbeb390-f289-47f5-987a-f269a6e0cc88
+    - !<own> 9d3ba571-f3d1-49af-92ce-2680f58425c8
     - !<own> 7cd0f19c-c335-4b6f-a7a5-747e47d19c5c
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
@@ -521,7 +522,8 @@
   ScriptInputs:
     "":
       snap3DFactoryObj: !<reference.SceneObject> e2eb5afd-edf7-4812-9570-c323c00660d9
-      propPrefab: !<reference.ObjectPrefab> 3a9879e2-7189-4795-9fe5-7457fce00c95
+      propPrefab: !<reference.ObjectPrefab> c6ae9483-cbe7-4715-9c55-8d259841ef9d
+      propGenerationUI: !<reference.SceneObject> 7cd0f19c-c335-4b6f-a7a5-747e47d19c5c
   ScriptTypes:
     "":
       {}
@@ -4623,17 +4625,16 @@
   PrefabRemaps:
     []
   Name: PropGenController
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: -55.000000}
+    Position: {x: 35.000000, y: 0.000000, z: -55.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
     - !<own> 45ecea7b-9f17-4402-90fd-f35516c81151
     - !<own> 9157b012-da1a-48fe-8d4d-6bb785e83ea9
-    - !<own> 9d3ba571-f3d1-49af-92ce-2680f58425c8
   Components:
     - !<own> 1bbd0f30-1fcd-420a-8b37-a2cb26b3d898
 - !<SceneObject/7dd65242-8d11-447f-934c-ccd7fbbe72da>
@@ -5762,7 +5763,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Position: {x: 0.000000, y: 0.000000, z: -55.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
