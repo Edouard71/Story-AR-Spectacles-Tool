@@ -34,10 +34,8 @@ dock:
           - items:
               - persistentName: Snap.Plugin.Gui.PreviewPanel
                 Uuid: 52fc2a95-41a3-427b-a138-1e00eb1c405e
-              - persistentName: Snap.Plugin.Gui.ScriptEditor
-                Uuid: 09278d19-be10-4707-b4d5-fec7fdc01a00
             type: section
-            current: 1
+            current: 0
         sizes:
           - 282
           - 300
