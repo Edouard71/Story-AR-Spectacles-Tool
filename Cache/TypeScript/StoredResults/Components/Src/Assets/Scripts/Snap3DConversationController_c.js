@@ -16,7 +16,6 @@ function checkUndefined(property, showIfData) {
 // @input SceneObject npcGenerationUI
 // @input AssignableType instantiator
 // @input Asset.ObjectPrefab npcPrefab
-// @input Component.Text failureIndicator
 if (!global.BaseScriptComponent) {
     function BaseScriptComponent() {}
     global.BaseScriptComponent = BaseScriptComponent;
@@ -35,7 +34,6 @@ awakeEvent.bind(() => {
     checkUndefined("npcGenerationUI", []);
     checkUndefined("instantiator", []);
     checkUndefined("npcPrefab", []);
-    checkUndefined("failureIndicator", []);
     if (script.onAwake) {
        script.onAwake();
     }

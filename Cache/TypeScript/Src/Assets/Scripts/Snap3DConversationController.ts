@@ -16,7 +16,7 @@ export class Snap3DConversationController extends BaseScriptComponent {
   @input npcGenerationUI: SceneObject;
   @input instantiator: Instantiator;
   @input npcPrefab: ObjectPrefab;
-  @input failureIndicator: Text;
+  
 
   private factory: Snap3DInteractableFactory;
   private activeNPC: Snap3DInteractable | null = null;
@@ -315,7 +315,6 @@ private spawnNPC(prompt: string = "Friendly robot with headphones") {
 
       })
       .catch((err: string) => {
-        this.failureIndicator.text = `Failed to spawn NPC: ${err}`;
         print(`💥 Failed to spawn NPC: ${err}`);
       });
   } else {

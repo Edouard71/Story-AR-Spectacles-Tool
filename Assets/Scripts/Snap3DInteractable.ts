@@ -59,7 +59,7 @@ export class Snap3DInteractable extends BaseScriptComponent {
     this.img.getTransform().setLocalScale(this.sizeVec);
 
     // ensure text fields are hidden initially
-    this.speechBubbleDisplay.text = "Speech Bubble Placeholder Text";
+    this.speechBubbleDisplay.enabled = false;
   }
 
  

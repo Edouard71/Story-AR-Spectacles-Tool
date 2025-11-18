@@ -41,7 +41,7 @@
   DefaultScriptInputs:
     - button: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
       activityRenderMesh: !<reference.RenderMeshVisual> 00000000-0000-0000-0000-000000000000
-      enableRightGrabTrigger: true
+      enableRightGrabTrigger: false
       enableLeftGrabTrigger: false
   ScriptTypes:
     -

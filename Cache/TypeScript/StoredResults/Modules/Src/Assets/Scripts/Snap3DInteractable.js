@@ -113,7 +113,7 @@ let Snap3DInteractable = (() => {
             this.colliderObj.getTransform().setLocalScale(this.sizeVec);
             this.img.getTransform().setLocalScale(this.sizeVec);
             // ensure text fields are hidden initially
-            this.speechBubbleDisplay.text = "Speech Bubble Placeholder Text";
+            this.speechBubbleDisplay.enabled = false;
         }
         //----------------------------------------------------------------------
         // SYNC SETUP — must be called manually after setNetworkId()

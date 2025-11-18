@@ -26,7 +26,6 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
-    failureIndicator: false
     instantiator: false
     npcGenerationUI: false
     npcPrefab: false
@@ -44,7 +43,6 @@
       npcGenerationUI: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       instantiator: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
       npcPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
-      failureIndicator: !<reference.Text> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -53,4 +51,3 @@
     - // @input SceneObject npcGenerationUI
     - // @input AssignableType instantiator
     - // @input Asset.ObjectPrefab npcPrefab
-    - // @input Component.Text failureIndicator

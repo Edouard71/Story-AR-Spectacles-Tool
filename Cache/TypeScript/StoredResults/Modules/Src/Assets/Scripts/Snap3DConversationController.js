@@ -72,7 +72,6 @@ let Snap3DConversationController = (() => {
             this.npcGenerationUI = this.npcGenerationUI;
             this.instantiator = this.instantiator;
             this.npcPrefab = this.npcPrefab;
-            this.failureIndicator = this.failureIndicator;
             this.activeNPC = null;
             this.conversationHistory = [];
             this.isProcessing = false;
@@ -92,7 +91,6 @@ let Snap3DConversationController = (() => {
             this.npcGenerationUI = this.npcGenerationUI;
             this.instantiator = this.instantiator;
             this.npcPrefab = this.npcPrefab;
-            this.failureIndicator = this.failureIndicator;
             this.activeNPC = null;
             this.conversationHistory = [];
             this.isProcessing = false;
@@ -334,7 +332,6 @@ let Snap3DConversationController = (() => {
                     }
                 })
                     .catch((err) => {
-                    this.failureIndicator.text = `Failed to spawn NPC: ${err}`;
                     print(`💥 Failed to spawn NPC: ${err}`);
                 });
             }

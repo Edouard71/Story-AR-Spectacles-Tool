@@ -34,7 +34,7 @@
     "":
       button: !<MappingBased.AssignableType> 6a4f13b9-2180-410f-b62f-f988642ec928
       activityRenderMesh: !<reference.RenderMeshVisual> b037ad12-4f54-4210-9273-ab56db13d0f2
-      enableRightGrabTrigger: true
+      enableRightGrabTrigger: false
       enableLeftGrabTrigger: false
   ScriptTypes:
     "":
