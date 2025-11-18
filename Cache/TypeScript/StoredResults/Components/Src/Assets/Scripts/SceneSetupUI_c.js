@@ -17,6 +17,8 @@ function checkUndefined(property, showIfData) {
 // @input Component.Text personalityField
 // @input Component.Text sceneField
 // @input Component.ScriptComponent unifiedAsrBtn
+// @input bool useLeftHandGesture = true
+// @input bool useRightHandGesture
 if (!global.BaseScriptComponent) {
     function BaseScriptComponent() {}
     global.BaseScriptComponent = BaseScriptComponent;
@@ -36,6 +38,8 @@ awakeEvent.bind(() => {
     checkUndefined("personalityField", []);
     checkUndefined("sceneField", []);
     checkUndefined("unifiedAsrBtn", []);
+    checkUndefined("useLeftHandGesture", []);
+    checkUndefined("useRightHandGesture", []);
     if (script.onAwake) {
        script.onAwake();
     }

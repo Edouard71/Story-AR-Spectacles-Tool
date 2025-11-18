@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Instantiator = exports.InstantiationOptions = void 0;
 var __selfType = requireType("./Instantiator");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 const NetworkRootInfo_1 = require("../Core/NetworkRootInfo");
 const NetworkUtils_1 = require("../Core/NetworkUtils");
 const PersistenceType_1 = require("../Core/PersistenceType");

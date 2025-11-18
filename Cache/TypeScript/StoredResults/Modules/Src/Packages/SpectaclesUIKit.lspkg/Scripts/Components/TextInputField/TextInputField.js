@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TextInputField = exports.BORDER_GRADIENT_PARAMETERS = void 0;
 var __selfType = requireType("./TextInputField");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 require("LensStudio:TextInputModule"); // eslint-disable-line @typescript-eslint/no-require-imports
 const Interactable_1 = require("SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable");
 const Interactor_1 = require("SpectaclesInteractionKit.lspkg/Core/Interactor/Interactor");

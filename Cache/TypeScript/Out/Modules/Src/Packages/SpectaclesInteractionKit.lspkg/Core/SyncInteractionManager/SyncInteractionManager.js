@@ -42,7 +42,16 @@ exports.SyncInteractionManager = void 0;
 exports.serializeInputState = serializeInputState;
 exports.parseInputState = parseInputState;
 var __selfType = requireType("./SyncInteractionManager");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 const InteractorCursor_1 = require("../../Components/Interaction/InteractorCursor/InteractorCursor");
 const CursorControllerProvider_1 = require("../../Providers/CursorControllerProvider/CursorControllerProvider");
 const SyncKitBridge_1 = require("../../Utils/SyncKitBridge");

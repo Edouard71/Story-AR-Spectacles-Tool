@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ScreenTransformAdapter = void 0;
 var __selfType = requireType("./ScreenTransformAdapter");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 /**
  * This class adapts a SceneObject's transform to a ScreenTransform if it is a child of a Canvas. It preserves the object's position and rotation during the transformation.
  */

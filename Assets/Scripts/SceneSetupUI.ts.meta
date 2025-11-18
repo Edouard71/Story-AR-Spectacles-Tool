@@ -31,6 +31,8 @@
     physicalField: false
     sceneField: false
     unifiedAsrBtn: false
+    useLeftHandGesture: false
+    useRightHandGesture: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -45,6 +47,8 @@
       personalityField: !<reference.Text> 00000000-0000-0000-0000-000000000000
       sceneField: !<reference.Text> 00000000-0000-0000-0000-000000000000
       unifiedAsrBtn: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      useLeftHandGesture: true
+      useRightHandGesture: false
   ScriptTypes:
     -
       {}
@@ -54,3 +58,5 @@
     - // @input Component.Text personalityField
     - // @input Component.Text sceneField
     - // @input Component.ScriptComponent unifiedAsrBtn
+    - // @input bool useLeftHandGesture = true
+    - // @input bool useRightHandGesture

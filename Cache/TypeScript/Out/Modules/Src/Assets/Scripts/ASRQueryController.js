@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ASRQueryController = void 0;
 var __selfType = requireType("./ASRQueryController");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 const Event_1 = require("SpectaclesInteractionKit.lspkg/Utils/Event");
 const animate_1 = require("SpectaclesInteractionKit.lspkg/Utils/animate");
 let ASRQueryController = (() => {
@@ -54,64 +63,258 @@ let ASRQueryController = (() => {
             super();
             this.button = this.button;
             this.activityRenderMesh = this.activityRenderMesh;
+            this.enableRightGrabTrigger = this.enableRightGrabTrigger;
+            this.enableLeftGrabTrigger = this.enableLeftGrabTrigger;
             this.asrModule = require("LensStudio:AsrModule");
+            this.gestureModule = require("LensStudio:GestureModule");
             this.isRecording = false;
+            this.rightGrabEvent = null;
+            this.rightGrabHandler = null;
+            this.rightGrabBinding = null;
+            this.leftGrabEvent = null;
+            this.leftGrabHandler = null;
+            this.leftGrabBinding = null;
+            this.gestureHandType = null;
+            this.activeResolve = null;
+            this.activeReject = null;
             this.onQueryEvent = new Event_1.default();
         }
         __initialize() {
             super.__initialize();
             this.button = this.button;
             this.activityRenderMesh = this.activityRenderMesh;
+            this.enableRightGrabTrigger = this.enableRightGrabTrigger;
+            this.enableLeftGrabTrigger = this.enableLeftGrabTrigger;
             this.asrModule = require("LensStudio:AsrModule");
+            this.gestureModule = require("LensStudio:GestureModule");
             this.isRecording = false;
+            this.rightGrabEvent = null;
+            this.rightGrabHandler = null;
+            this.rightGrabBinding = null;
+            this.leftGrabEvent = null;
+            this.leftGrabHandler = null;
+            this.leftGrabBinding = null;
+            this.gestureHandType = null;
+            this.activeResolve = null;
+            this.activeReject = null;
             this.onQueryEvent = new Event_1.default();
         }
         onAwake() {
             this.createEvent("OnStartEvent").bind(this.init.bind(this));
+        }
+        onDestroy() {
+            this.teardownGestureTrigger();
         }
         init() {
             this.activityMaterial = this.activityRenderMesh.mainMaterial.clone();
             this.activityRenderMesh.clearMaterials();
             this.activityRenderMesh.mainMaterial = this.activityMaterial;
             this.activityMaterial.mainPass.in_out = 0;
-            this.button.onInitialized.add(() => {
-                this.button.onTriggerUp.add(() => {
-                    this.getVoiceQuery().then((query) => {
-                        this.onQueryEvent.invoke(query);
+            if (this.button) {
+                this.button.onInitialized.add(() => {
+                    this.button.onTriggerUp.add(() => {
+                        this.triggerVoiceCapture("button");
                     });
                 });
+            }
+            else {
+                print("[ASRQueryController] ⚠️ Mic button input not assigned.");
+            }
+            this.refreshGestureTriggers();
+        }
+        triggerVoiceCapture(source = "external") {
+            if (this.isRecording) {
+                const isGestureTrigger = source.indexOf("gesture") === 0;
+                if (isGestureTrigger) {
+                    print(`[ASRQueryController] ${source} cancel requested.`);
+                    this.failRecording("Gesture cancel");
+                }
+                else {
+                    print(`[ASRQueryController] Ignoring ${source} trigger — already capturing voice.`);
+                }
+                return;
+            }
+            this.getVoiceQuery()
+                .then((query) => {
+                this.onQueryEvent.invoke(query);
+            })
+                .catch((err) => {
+                if (err === "Gesture cancel") {
+                    print("[ASRQueryController] Capture cancelled via gesture.");
+                }
+                else {
+                    print(`[ASRQueryController] ${source} capture error: ${err}`);
+                }
             });
+        }
+        triggerVoiceCaptureFromGesture(hand = "gesture") {
+            const label = hand === "left"
+                ? "gesture-left"
+                : hand === "right"
+                    ? "gesture-right"
+                    : "gesture";
+            this.triggerVoiceCapture(label);
+        }
+        configureGestureTriggers(options) {
+            let changed = false;
+            if (typeof options.enableRight === "boolean") {
+                this.enableRightGrabTrigger = options.enableRight;
+                changed = true;
+            }
+            if (typeof options.enableLeft === "boolean") {
+                this.enableLeftGrabTrigger = options.enableLeft;
+                changed = true;
+            }
+            if (changed) {
+                this.refreshGestureTriggers();
+            }
         }
         getVoiceQuery() {
             return new Promise((resolve, reject) => {
                 if (this.isRecording) {
-                    this.animateVoiceIndicator(false);
-                    this.asrModule.stopTranscribing();
-                    this.isRecording = false;
-                    reject("Already recording, cancel recording");
+                    reject("Already recording");
                     return;
                 }
                 this.isRecording = true;
+                this.activeResolve = resolve;
+                this.activeReject = reject;
                 let asrSettings = AsrModule.AsrTranscriptionOptions.create();
                 asrSettings.mode = AsrModule.AsrMode.HighAccuracy;
                 asrSettings.silenceUntilTerminationMs = 1500;
                 asrSettings.onTranscriptionUpdateEvent.add((asrOutput) => {
                     print(asrOutput.text);
                     if (asrOutput.isFinal) {
-                        this.isRecording = false;
-                        this.animateVoiceIndicator(false);
-                        this.asrModule.stopTranscribing();
-                        resolve(asrOutput.text);
+                        this.completeRecording(asrOutput.text);
                     }
                 });
                 asrSettings.onTranscriptionErrorEvent.add((asrOutput) => {
-                    this.isRecording = false;
-                    this.animateVoiceIndicator(false);
-                    reject(asrOutput);
+                    this.failRecording(asrOutput);
                 });
                 this.animateVoiceIndicator(true);
                 this.asrModule.startTranscribing(asrSettings);
             });
+        }
+        refreshGestureTriggers() {
+            if (!this.ensureGestureModule()) {
+                return;
+            }
+            this.ensureRightGestureSubscription();
+            this.ensureLeftGestureSubscription();
+        }
+        ensureGestureModule() {
+            if (!this.gestureModule || !this.gestureModule.getGrabBeginEvent) {
+                print("[ASRQueryController] GestureModule unavailable.");
+                return false;
+            }
+            if (!this.gestureHandType) {
+                this.gestureHandType =
+                    this.gestureModule.HandType ||
+                        globalThis.GestureModule?.HandType ||
+                        null;
+            }
+            if (!this.gestureHandType) {
+                print("[ASRQueryController] GestureModule.HandType missing.");
+                return false;
+            }
+            return true;
+        }
+        teardownGestureTrigger() {
+            try {
+                if (this.rightGrabBinding && this.rightGrabBinding.remove) {
+                    this.rightGrabBinding.remove();
+                }
+                else if (this.rightGrabEvent && this.rightGrabHandler && this.rightGrabEvent.remove) {
+                    this.rightGrabEvent.remove(this.rightGrabHandler);
+                }
+            }
+            catch (e) {
+                print(`[ASRQueryController] ⚠️ Failed to remove right grab handler: ${e}`);
+            }
+            try {
+                if (this.leftGrabBinding && this.leftGrabBinding.remove) {
+                    this.leftGrabBinding.remove();
+                }
+                else if (this.leftGrabEvent && this.leftGrabHandler && this.leftGrabEvent.remove) {
+                    this.leftGrabEvent.remove(this.leftGrabHandler);
+                }
+            }
+            catch (e) {
+                print(`[ASRQueryController] ⚠️ Failed to remove left grab handler: ${e}`);
+            }
+            this.rightGrabEvent = null;
+            this.rightGrabHandler = null;
+            this.rightGrabBinding = null;
+            this.leftGrabEvent = null;
+            this.leftGrabHandler = null;
+            this.leftGrabBinding = null;
+        }
+        ensureRightGestureSubscription() {
+            if (this.rightGrabHandler) {
+                return;
+            }
+            if (!this.enableRightGrabTrigger) {
+                return;
+            }
+            this.rightGrabEvent = this.gestureModule.getGrabBeginEvent(this.gestureHandType.Right);
+            if (!this.rightGrabEvent || !this.rightGrabEvent.add) {
+                print("[ASRQueryController] Failed to subscribe to right grab event.");
+                this.rightGrabEvent = null;
+                return;
+            }
+            this.rightGrabHandler = () => {
+                if (!this.enableRightGrabTrigger) {
+                    return;
+                }
+                this.triggerVoiceCaptureFromGesture("right");
+            };
+            this.rightGrabBinding = this.rightGrabEvent.add(this.rightGrabHandler);
+        }
+        ensureLeftGestureSubscription() {
+            if (this.leftGrabHandler) {
+                return;
+            }
+            if (!this.enableLeftGrabTrigger) {
+                return;
+            }
+            this.leftGrabEvent = this.gestureModule.getGrabBeginEvent(this.gestureHandType.Left);
+            if (!this.leftGrabEvent || !this.leftGrabEvent.add) {
+                print("[ASRQueryController] Failed to subscribe to left grab event.");
+                this.leftGrabEvent = null;
+                return;
+            }
+            this.leftGrabHandler = () => {
+                if (!this.enableLeftGrabTrigger) {
+                    return;
+                }
+                this.triggerVoiceCaptureFromGesture("left");
+            };
+            this.leftGrabBinding = this.leftGrabEvent.add(this.leftGrabHandler);
+        }
+        completeRecording(result) {
+            if (!this.isRecording)
+                return;
+            this.isRecording = false;
+            this.animateVoiceIndicator(false);
+            this.asrModule.stopTranscribing();
+            const resolver = this.activeResolve;
+            this.activeResolve = null;
+            this.activeReject = null;
+            if (resolver) {
+                resolver(result);
+            }
+        }
+        failRecording(reason) {
+            if (!this.isRecording)
+                return;
+            this.isRecording = false;
+            this.animateVoiceIndicator(false);
+            this.asrModule.stopTranscribing();
+            const rejecter = this.activeReject;
+            this.activeResolve = null;
+            this.activeReject = null;
+            if (rejecter) {
+                rejecter(reason);
+            }
         }
         animateVoiceIndicator(on) {
             if (on) {

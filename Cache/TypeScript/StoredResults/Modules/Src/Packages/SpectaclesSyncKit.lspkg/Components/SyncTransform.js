@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SyncTransform = void 0;
 var __selfType = requireType("./SyncTransform");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 const NetworkIdTools_1 = require("../Core/NetworkIdTools");
 const NetworkIdType_1 = require("../Core/NetworkIdType");
 const PersistenceType_1 = require("../Core/PersistenceType");

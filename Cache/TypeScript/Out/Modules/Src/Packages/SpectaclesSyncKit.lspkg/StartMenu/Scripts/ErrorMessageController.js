@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ErrorMessageController = exports.ErrorMessageControllerComponent = exports.ErrorType = exports.TWEEN_DURATION_MILLISECONDS = void 0;
 var __selfType = requireType("./ErrorMessageController");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 const LSTween_1 = require("LSTween.lspkg/LSTween");
 const Easing_1 = require("LSTween.lspkg/TweenJS/Easing");
 const Singleton_1 = require("SpectaclesInteractionKit.lspkg/Decorators/Singleton");

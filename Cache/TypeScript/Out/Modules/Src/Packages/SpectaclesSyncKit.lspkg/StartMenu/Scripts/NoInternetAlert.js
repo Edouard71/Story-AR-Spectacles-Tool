@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NoInternetAlert = void 0;
 var __selfType = requireType("./NoInternetAlert");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 const LSTween_1 = require("LSTween.lspkg/LSTween");
 const Easing_1 = require("LSTween.lspkg/TweenJS/Easing");
 let NoInternetAlert = (() => {

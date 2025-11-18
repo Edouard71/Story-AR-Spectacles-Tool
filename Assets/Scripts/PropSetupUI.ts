@@ -1,5 +1,14 @@
 import { ASRQueryController } from "./ASRQueryController";
 
+type AsrBridge = {
+  onQueryEvent: { add: (fn: (t: string) => void) => void };
+  triggerVoiceCapture?: (source?: string) => void;
+  configureGestureTriggers?: (options: {
+    enableRight?: boolean;
+    enableLeft?: boolean;
+  }) => void;
+};
+
 @component
 export class SceneSetupUI extends BaseScriptComponent {
   @input("Component.ScriptComponent") propController; // your PropController
@@ -7,6 +16,7 @@ export class SceneSetupUI extends BaseScriptComponent {
   @input("Component.ScriptComponent") propRecordBtn: BaseScriptComponent;
 
   private propDescription = "";
+  private propAsrBridge: AsrBridge | null = null;
 
   onAwake() {
     this.createEvent("OnStartEvent").bind(() => this.init());
@@ -14,15 +24,30 @@ export class SceneSetupUI extends BaseScriptComponent {
 
   private init() {
     const propCtl = this.resolveAsrController(this.propRecordBtn, "prop");
-    if (propCtl) propCtl.onQueryEvent.add((t: string) => this.updateField("prop", t));
+    if (propCtl) {
+      this.propAsrBridge = propCtl;
+      propCtl.onQueryEvent.add((t: string) => this.updateField("prop", t));
+      if (!propCtl.triggerVoiceCapture) {
+        print(
+          "[SceneSetupUI] ℹ️ triggerVoiceCapture() not exposed; gestures still fire via ASR component."
+        );
+      }
+    }
 
     print("[SceneSetupUI] ✅ Initialized (Prop Builder)");
   }
 
-  private resolveAsrController(
-    comp: any,
-    tag: string
-  ): { onQueryEvent: { add: (fn: (t: string) => void) => void } } | null {
+  public startPropVoiceCapture() {
+    if (this.propAsrBridge && this.propAsrBridge.triggerVoiceCapture) {
+      this.propAsrBridge.triggerVoiceCapture("external");
+    } else {
+      print(
+        "[SceneSetupUI] ⚠️ Cannot trigger prop voice capture — bridge missing triggerVoiceCapture()."
+      );
+    }
+  }
+
+  private resolveAsrController(comp: any, tag: string): AsrBridge | null {
     if (!comp) {
       print(`[SceneSetupUI] ⚠️ ${tag} ASR button not assigned`);
       return null;
@@ -35,7 +60,7 @@ export class SceneSetupUI extends BaseScriptComponent {
 
     if (comp.api && comp.api.onQueryEvent && comp.api.onQueryEvent.add) {
       print(`[SceneSetupUI] 🔗 ${tag} controller: using .api bridge`);
-      return comp.api;
+      return comp.api as AsrBridge;
     }
 
     print(`[SceneSetupUI] ❌ ${tag} controller does not expose onQueryEvent`);
@@ -65,5 +90,7 @@ export class SceneSetupUI extends BaseScriptComponent {
     }
 
     this.propController.spawnProp(this.propDescription);
+    this.propDescription = "";
+    this.propField.text = "";
   }
 }

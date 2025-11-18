@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CapsuleMeshCustomizer = void 0;
 var __selfType = requireType("./CapsuleMeshCustomizer");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 /**
  * This class customizes a mesh visual to create an extendable capsule shape. It allows configuration of the capsule's
  * length, radius, and poly-count through various input properties.

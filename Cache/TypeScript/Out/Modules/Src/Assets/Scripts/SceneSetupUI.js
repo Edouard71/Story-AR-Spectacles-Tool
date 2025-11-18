@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SceneSetupUI = void 0;
 var __selfType = requireType("./SceneSetupUI");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 const OpenAI_1 = require("RemoteServiceGateway.lspkg/HostedExternal/OpenAI");
 let SceneSetupUI = (() => {
     let _classDecorators = [component];
@@ -57,6 +66,8 @@ let SceneSetupUI = (() => {
             this.sceneField = this.sceneField;
             // ✔ Only one ASR button
             this.unifiedAsrBtn = this.unifiedAsrBtn;
+            this.useLeftHandGesture = this.useLeftHandGesture;
+            this.useRightHandGesture = this.useRightHandGesture;
             this.physicalDescription = "";
             this.personalityDescription = "";
             this.sceneDescription = "";
@@ -69,6 +80,8 @@ let SceneSetupUI = (() => {
             this.sceneField = this.sceneField;
             // ✔ Only one ASR button
             this.unifiedAsrBtn = this.unifiedAsrBtn;
+            this.useLeftHandGesture = this.useLeftHandGesture;
+            this.useRightHandGesture = this.useRightHandGesture;
             this.physicalDescription = "";
             this.personalityDescription = "";
             this.sceneDescription = "";
@@ -80,6 +93,7 @@ let SceneSetupUI = (() => {
             const ctl = this.resolveAsrController(this.unifiedAsrBtn, "unified");
             if (ctl) {
                 ctl.onQueryEvent.add((text) => this.handleUnifiedSpeech(text));
+                this.configureGestureForController(ctl, "unified");
             }
             print("[SceneSetupUI] ✅ One-button ASR Initialized");
         }
@@ -97,6 +111,20 @@ let SceneSetupUI = (() => {
                 return comp.api;
             print(`[SceneSetupUI] ❌ ${tag} ASR controller missing .onQueryEvent`);
             return null;
+        }
+        configureGestureForController(controller, tag) {
+            if (!this.useLeftHandGesture && !this.useRightHandGesture) {
+                return;
+            }
+            if (controller.configureGestureTriggers) {
+                controller.configureGestureTriggers({
+                    enableLeft: this.useLeftHandGesture,
+                    enableRight: this.useRightHandGesture,
+                });
+            }
+            else {
+                print(`[SceneSetupUI] ⚠️ ${tag} controller cannot configure gesture triggers at runtime — enable them via inspector on the ASR component.`);
+            }
         }
         //----------------------------------------------------------------------
         // ASR result handler → send whole speech to LLM

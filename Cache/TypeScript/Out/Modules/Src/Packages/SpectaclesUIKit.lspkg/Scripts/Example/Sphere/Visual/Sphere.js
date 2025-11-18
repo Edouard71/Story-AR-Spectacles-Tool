@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sphere = void 0;
 var __selfType = requireType("./Sphere");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 const UIKitUtilities_1 = require("../../../Utility/UIKitUtilities");
 /**
  * The `Sphere` class represents a 3D sphere component in the scene. It extends the `BaseScriptComponent`

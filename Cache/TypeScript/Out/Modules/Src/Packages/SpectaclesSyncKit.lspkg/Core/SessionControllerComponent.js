@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SessionControllerComponent = exports.StartMode = void 0;
 var __selfType = requireType("./SessionControllerComponent");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 const SyncKitLogger_1 = require("../Utils/SyncKitLogger");
 const VersionNumber_1 = require("../VersionNumber");
 const SessionController_1 = require("./SessionController");

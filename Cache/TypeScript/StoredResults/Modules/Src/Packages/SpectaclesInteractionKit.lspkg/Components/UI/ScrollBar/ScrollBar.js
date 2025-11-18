@@ -40,7 +40,16 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ScrollBar = void 0;
 var __selfType = requireType("./ScrollBar");
-function component(target) { target.getTypeName = function () { return __selfType; }; }
+function component(target) {
+    target.getTypeName = function () { return __selfType; };
+    if (target.prototype.hasOwnProperty("getTypeName"))
+        return;
+    Object.defineProperty(target.prototype, "getTypeName", {
+        value: function () { return __selfType; },
+        configurable: true,
+        writable: true
+    });
+}
 const ScrollView_1 = require("../ScrollView/ScrollView");
 const Interactor_1 = require("../../../Core/Interactor/Interactor");
 const NativeLogger_1 = require("../../../Utils/NativeLogger");

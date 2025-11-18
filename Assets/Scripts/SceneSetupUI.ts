@@ -2,6 +2,14 @@ import { ASRQueryController } from "./ASRQueryController";
 import { OpenAI } from "RemoteServiceGateway.lspkg/HostedExternal/OpenAI";
 import { OpenAITypes } from "RemoteServiceGateway.lspkg/HostedExternal/OpenAITypes";
 
+type AsrBridge = {
+  onQueryEvent: { add: (fn: (t: string) => void) => void };
+  configureGestureTriggers?: (options: {
+    enableRight?: boolean;
+    enableLeft?: boolean;
+  }) => void;
+};
+
 @component
 export class SceneSetupUI extends BaseScriptComponent {
   @input("Component.ScriptComponent") conversationController;
@@ -12,6 +20,8 @@ export class SceneSetupUI extends BaseScriptComponent {
 
   // ✔ Only one ASR button
   @input("Component.ScriptComponent") unifiedAsrBtn: BaseScriptComponent;
+  @input private useLeftHandGesture: boolean = true;
+  @input private useRightHandGesture: boolean = false;
 
   private physicalDescription = "";
   private personalityDescription = "";
@@ -26,6 +36,7 @@ export class SceneSetupUI extends BaseScriptComponent {
 
     if (ctl) {
       ctl.onQueryEvent.add((text: string) => this.handleUnifiedSpeech(text));
+      this.configureGestureForController(ctl, "unified");
     }
 
     print("[SceneSetupUI] ✅ One-button ASR Initialized");
@@ -34,7 +45,7 @@ export class SceneSetupUI extends BaseScriptComponent {
   //----------------------------------------------------------------------
   // Convert generic script → ASRQueryController interface
   //----------------------------------------------------------------------
-  private resolveAsrController(comp: any, tag: string) {
+  private resolveAsrController(comp: any, tag: string): AsrBridge | null {
     if (!comp) {
       print(`[SceneSetupUI] ⚠️ ${tag} ASR button not assigned`);
       return null;
@@ -42,10 +53,27 @@ export class SceneSetupUI extends BaseScriptComponent {
 
     if ((comp as ASRQueryController).onQueryEvent) return comp;
 
-    if (comp.api && comp.api.onQueryEvent) return comp.api;
+    if (comp.api && comp.api.onQueryEvent) return comp.api as AsrBridge;
 
     print(`[SceneSetupUI] ❌ ${tag} ASR controller missing .onQueryEvent`);
     return null;
+  }
+
+  private configureGestureForController(controller: AsrBridge, tag: string) {
+    if (!this.useLeftHandGesture && !this.useRightHandGesture) {
+      return;
+    }
+
+    if (controller.configureGestureTriggers) {
+      controller.configureGestureTriggers({
+        enableLeft: this.useLeftHandGesture,
+        enableRight: this.useRightHandGesture,
+      });
+    } else {
+      print(
+        `[SceneSetupUI] ⚠️ ${tag} controller cannot configure gesture triggers at runtime — enable them via inspector on the ASR component.`
+      );
+    }
   }
 
   //----------------------------------------------------------------------
