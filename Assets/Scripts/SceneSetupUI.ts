@@ -120,8 +120,8 @@ export class SceneSetupUI extends BaseScriptComponent {
   //----------------------------------------------------------------------
   private checkReadyToRun() {
     if (
-      this.physicalDescription.trim() &&
-      this.personalityDescription.trim() &&
+      this.physicalDescription.trim() ||
+      this.personalityDescription.trim() ||
       this.sceneDescription.trim()
     ) {
       print("🚀 All fields ready — generating NPC!");

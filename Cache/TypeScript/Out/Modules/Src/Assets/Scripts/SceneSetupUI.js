@@ -161,8 +161,8 @@ let SceneSetupUI = (() => {
         // Check if ready → build NPC
         //----------------------------------------------------------------------
         checkReadyToRun() {
-            if (this.physicalDescription.trim() &&
-                this.personalityDescription.trim() &&
+            if (this.physicalDescription.trim() ||
+                this.personalityDescription.trim() ||
                 this.sceneDescription.trim()) {
                 print("🚀 All fields ready — generating NPC!");
                 this.runScene();
