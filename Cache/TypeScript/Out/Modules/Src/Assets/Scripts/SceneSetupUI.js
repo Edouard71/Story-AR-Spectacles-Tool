@@ -41,6 +41,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SceneSetupUI = void 0;
 var __selfType = requireType("./SceneSetupUI");
 function component(target) { target.getTypeName = function () { return __selfType; }; }
+const OpenAI_1 = require("RemoteServiceGateway.lspkg/HostedExternal/OpenAI");
 let SceneSetupUI = (() => {
     let _classDecorators = [component];
     let _classDescriptor;
@@ -51,14 +52,11 @@ let SceneSetupUI = (() => {
         constructor() {
             super();
             this.conversationController = this.conversationController;
-            // UI text fields
             this.physicalField = this.physicalField;
             this.personalityField = this.personalityField;
             this.sceneField = this.sceneField;
-            // ASR buttons (each one has ASRQueryController)
-            this.physicalAsrBtn = this.physicalAsrBtn;
-            this.personalityAsrBtn = this.personalityAsrBtn;
-            this.sceneAsrBtn = this.sceneAsrBtn;
+            // ✔ Only one ASR button
+            this.unifiedAsrBtn = this.unifiedAsrBtn;
             this.physicalDescription = "";
             this.personalityDescription = "";
             this.sceneDescription = "";
@@ -66,89 +64,111 @@ let SceneSetupUI = (() => {
         __initialize() {
             super.__initialize();
             this.conversationController = this.conversationController;
-            // UI text fields
             this.physicalField = this.physicalField;
             this.personalityField = this.personalityField;
             this.sceneField = this.sceneField;
-            // ASR buttons (each one has ASRQueryController)
-            this.physicalAsrBtn = this.physicalAsrBtn;
-            this.personalityAsrBtn = this.personalityAsrBtn;
-            this.sceneAsrBtn = this.sceneAsrBtn;
+            // ✔ Only one ASR button
+            this.unifiedAsrBtn = this.unifiedAsrBtn;
             this.physicalDescription = "";
             this.personalityDescription = "";
             this.sceneDescription = "";
         }
-        // ✔ initialize reliably after all components are awake
         onAwake() {
             this.createEvent("OnStartEvent").bind(() => this.init());
         }
         init() {
-            // Resolve each controller to an object that has `onQueryEvent.add(...)`
-            const physicalCtl = this.resolveAsrController(this.physicalAsrBtn, "physical");
-            const personalityCtl = this.resolveAsrController(this.personalityAsrBtn, "personality");
-            const sceneCtl = this.resolveAsrController(this.sceneAsrBtn, "scene");
-            if (physicalCtl)
-                physicalCtl.onQueryEvent.add((t) => this.updateField("physical", t));
-            if (personalityCtl)
-                personalityCtl.onQueryEvent.add((t) => this.updateField("personality", t));
-            if (sceneCtl)
-                sceneCtl.onQueryEvent.add((t) => this.updateField("scene", t));
-            print("[SceneSetupUI] ✅ Initialized");
+            const ctl = this.resolveAsrController(this.unifiedAsrBtn, "unified");
+            if (ctl) {
+                ctl.onQueryEvent.add((text) => this.handleUnifiedSpeech(text));
+            }
+            print("[SceneSetupUI] ✅ One-button ASR Initialized");
         }
-        /**
-         * Tries to get an ASRQueryController instance from a ScriptComponent input.
-         * Works if the input is:
-         *  - already typed as ASRQueryController, or
-         *  - a generic ScriptComponent that exposes .api.onQueryEvent
-         */
+        //----------------------------------------------------------------------
+        // Convert generic script → ASRQueryController interface
+        //----------------------------------------------------------------------
         resolveAsrController(comp, tag) {
             if (!comp) {
                 print(`[SceneSetupUI] ⚠️ ${tag} ASR button not assigned`);
                 return null;
             }
-            // Case A: it’s already our script class (best case)
-            if (comp.onQueryEvent) {
-                print(`[SceneSetupUI] 🔗 ${tag} controller: typed ASRQueryController`);
+            if (comp.onQueryEvent)
                 return comp;
-            }
-            // Case B: it’s a generic ScriptComponent but the script exposed an API
-            if (comp.api && comp.api.onQueryEvent && comp.api.onQueryEvent.add) {
-                print(`[SceneSetupUI] 🔗 ${tag} controller: using .api bridge`);
+            if (comp.api && comp.api.onQueryEvent)
                 return comp.api;
-            }
-            print(`[SceneSetupUI] ❌ ${tag} controller does not expose onQueryEvent`);
+            print(`[SceneSetupUI] ❌ ${tag} ASR controller missing .onQueryEvent`);
             return null;
         }
-        updateField(field, text) {
-            switch (field) {
-                case "physical":
-                    this.physicalDescription = text;
-                    this.physicalField.text = text;
-                    break;
-                case "personality":
-                    this.personalityDescription = text;
-                    this.personalityField.text = text;
-                    break;
-                case "scene":
-                    this.sceneDescription = text;
-                    this.sceneField.text = text;
-                    break;
-            }
-            print(`🎙️ ${field} captured: ${text}`);
-            // Check if all fields are ready
+        //----------------------------------------------------------------------
+        // ASR result handler → send whole speech to LLM
+        //----------------------------------------------------------------------
+        handleUnifiedSpeech(fullText) {
+            print(`🎤 User said: ${fullText}`);
+            this.callLLMToSplitInput(fullText);
+        }
+        //----------------------------------------------------------------------
+        // ✔ CORRECT OpenAI CALL using your API wrapper
+        //----------------------------------------------------------------------
+        callLLMToSplitInput(text) {
+            const req = {
+                model: "gpt-4o-mini",
+                messages: [
+                    {
+                        role: "system",
+                        content: "Split the user's input into three fields: physical, personality, and scene. Return ONLY valid JSON like: { \"physical\": \"..\", \"personality\": \"..\", \"scene\": \"..\" }"
+                    },
+                    {
+                        role: "user",
+                        content: text
+                    }
+                ],
+                temperature: 0.3,
+            };
+            // ✅ THIS IS THE CORRECT USAGE FOR YOUR WRAPPER
+            OpenAI_1.OpenAI.chatCompletions(req)
+                .then((res) => {
+                const raw = res.choices[0].message.content;
+                print("🧩 LLM Response: " + raw);
+                let parsed;
+                try {
+                    parsed = JSON.parse(raw);
+                }
+                catch (e) {
+                    print("❌ JSON parse failed: " + e);
+                    return;
+                }
+                this.applyLLMResult(parsed);
+            })
+                .catch((err) => {
+                print("❌ OpenAI chatCompletions error: " + err);
+            });
+        }
+        //----------------------------------------------------------------------
+        // Apply LLM output → update UI → build NPC
+        //----------------------------------------------------------------------
+        applyLLMResult(split) {
+            if (!split)
+                return;
+            this.physicalDescription = split.physical || "";
+            this.personalityDescription = split.personality || "";
+            this.sceneDescription = split.scene || "";
+            this.physicalField.text = this.physicalDescription;
+            this.personalityField.text = this.personalityDescription;
+            this.sceneField.text = this.sceneDescription;
+            print("✨ Fields auto-filled");
             this.checkReadyToRun();
         }
+        //----------------------------------------------------------------------
+        // Check if ready → build NPC
+        //----------------------------------------------------------------------
         checkReadyToRun() {
             if (this.physicalDescription.trim() &&
                 this.personalityDescription.trim() &&
                 this.sceneDescription.trim()) {
-                print("🚀 All fields complete — building NPC!");
+                print("🚀 All fields ready — generating NPC!");
                 this.runScene();
             }
         }
         runScene() {
-            print("🤖 Generating NPC with scene context...");
-            // call your conversation controller setup
             this.conversationController.setupScene(this.sceneDescription, this.physicalDescription, this.personalityDescription);
         }
     };

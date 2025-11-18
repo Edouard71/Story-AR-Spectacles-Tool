@@ -1,7 +1,7 @@
 CollapsedEntities:
   type: stringset
   value:
-    size: 853
+    size: 852
     values:
       - Base.png
       - Converse.js
@@ -34,7 +34,6 @@ CollapsedEntities:
       - Normal.png
       - PBR.mat
       - Prefabs/VoiceInput.prefab
-      - RemoteServiceGateway.lspkg
       - RemoteServiceGateway.lspkg/Helpers
       - RemoteServiceGateway.lspkg/Helpers/AudioProcessor.ts
       - RemoteServiceGateway.lspkg/Helpers/DynamicAudioOutput.ts

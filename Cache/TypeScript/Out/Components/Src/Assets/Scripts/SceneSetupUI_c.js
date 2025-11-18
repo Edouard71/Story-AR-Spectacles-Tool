@@ -16,9 +16,7 @@ function checkUndefined(property, showIfData) {
 // @input Component.Text physicalField
 // @input Component.Text personalityField
 // @input Component.Text sceneField
-// @input Component.ScriptComponent physicalAsrBtn
-// @input Component.ScriptComponent personalityAsrBtn
-// @input Component.ScriptComponent sceneAsrBtn
+// @input Component.ScriptComponent unifiedAsrBtn
 if (!global.BaseScriptComponent) {
     function BaseScriptComponent() {}
     global.BaseScriptComponent = BaseScriptComponent;
@@ -37,9 +35,7 @@ awakeEvent.bind(() => {
     checkUndefined("physicalField", []);
     checkUndefined("personalityField", []);
     checkUndefined("sceneField", []);
-    checkUndefined("physicalAsrBtn", []);
-    checkUndefined("personalityAsrBtn", []);
-    checkUndefined("sceneAsrBtn", []);
+    checkUndefined("unifiedAsrBtn", []);
     if (script.onAwake) {
        script.onAwake();
     }
