@@ -12,8 +12,10 @@ export class Snap3DPropController extends BaseScriptComponent {
   @input snap3DFactoryObj: SceneObject;
   @input("Asset.ObjectPrefab") propPrefab: ObjectPrefab;
   @input propGenerationUI: SceneObject;
+  @input conversationControllerObj: SceneObject;
 
   private factory: Snap3DInteractableFactory;
+  
   private session: any;
   private isHost = false;
   private role = "Unknown";
@@ -183,7 +185,7 @@ export class Snap3DPropController extends BaseScriptComponent {
         propComp.setPrompt(prompt);
         propComp.setSpeechBubble(`Prop ${propId}`);
         propComp.startTransformSync();
-
+    
         const offset = new vec3(Math.random() * 20 - 10, 0, Math.random() * 20 - 10);
         propObj.getTransform().setWorldPosition(offset);
 
@@ -268,6 +270,7 @@ export class Snap3DPropController extends BaseScriptComponent {
     propComp.setPrompt(prompt);
     // propComp.setSpeechBubble("👀 Synced Prop");
     // propComp.startTransformSync();
+    
     
     this.activeProps.push({ id: propId, entity: null, interactable: propComp });
   }

@@ -1,4 +1,5 @@
 import { ASRQueryController } from "./ASRQueryController";
+import { Snap3DConversationController } from "./Snap3DConversationController";
 
 type AsrBridge = {
   onQueryEvent: { add: (fn: (t: string) => void) => void };
@@ -14,13 +15,25 @@ export class SceneSetupUI extends BaseScriptComponent {
   @input("Component.ScriptComponent") propController; // your PropController
   @input("Component.Text") propField: Text;
   @input("Component.ScriptComponent") propRecordBtn: BaseScriptComponent;
+  @input conversationControllerObj: SceneObject;
 
   private propDescription = "";
   private propAsrBridge: AsrBridge | null = null;
+  private conversationCtrl: Snap3DConversationController;
 
   onAwake() {
     this.createEvent("OnStartEvent").bind(() => this.init());
+     this.conversationCtrl = this.conversationControllerObj.getComponent(Snap3DConversationController.getTypeName()) as Snap3DConversationController;
   }
+
+private notifyConversationToListen() {
+  if (this.conversationCtrl && this.conversationCtrl.restartListening) {
+    print("🔄 PropController: Restarting NPC Listening");
+    this.conversationCtrl.restartListening();
+  } else {
+    print("⚠️ No ConversationController found, skipping restart.");
+  }
+}
 
   private init() {
     const propCtl = this.resolveAsrController(this.propRecordBtn, "prop");
@@ -88,6 +101,9 @@ export class SceneSetupUI extends BaseScriptComponent {
       print("⚠️ PropController missing or invalid");
       return;
     }
+
+    print("Restarting NPC Listening!");
+    this.notifyConversationToListen(); 
 
     this.propController.spawnProp(this.propDescription);
     this.propDescription = "";

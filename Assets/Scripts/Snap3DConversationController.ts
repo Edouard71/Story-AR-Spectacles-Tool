@@ -19,7 +19,7 @@ export class Snap3DConversationController extends BaseScriptComponent {
   
 
   private factory: Snap3DInteractableFactory;
-  private activeNPC: Snap3DInteractable | null = null;
+  public activeNPC: Snap3DInteractable | null = null;
   private conversationHistory: { role: string; content: string }[] = [];
   private isProcessing = false;
   private asrOptions: any;
@@ -239,7 +239,7 @@ export class Snap3DConversationController extends BaseScriptComponent {
     this.restartListening();
   }
 
-  private restartListening() {
+  public restartListening() {
     this.isProcessing = false;
     this.asrModule.startTranscribing(this.asrOptions);
     print("Listening...");

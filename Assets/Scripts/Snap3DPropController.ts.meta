@@ -26,6 +26,7 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
+    conversationControllerObj: false
     propGenerationUI: false
     propPrefab: false
     snap3DFactoryObj: false
@@ -41,6 +42,7 @@
     - snap3DFactoryObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       propPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
       propGenerationUI: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      conversationControllerObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -48,3 +50,4 @@
     - // @input SceneObject snap3DFactoryObj
     - // @input Asset.ObjectPrefab propPrefab
     - // @input SceneObject propGenerationUI
+    - // @input SceneObject conversationControllerObj

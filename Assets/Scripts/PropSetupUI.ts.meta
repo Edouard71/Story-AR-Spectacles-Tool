@@ -26,6 +26,7 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
+    conversationControllerObj: false
     propController: false
     propField: false
     propRecordBtn: false
@@ -41,6 +42,7 @@
     - propController: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
       propField: !<reference.Text> 00000000-0000-0000-0000-000000000000
       propRecordBtn: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      conversationControllerObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -48,3 +50,4 @@
     - // @input Component.ScriptComponent propController
     - // @input Component.Text propField
     - // @input Component.ScriptComponent propRecordBtn
+    - // @input SceneObject conversationControllerObj
