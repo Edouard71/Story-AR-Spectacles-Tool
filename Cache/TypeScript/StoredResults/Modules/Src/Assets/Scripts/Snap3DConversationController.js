@@ -72,7 +72,6 @@ let Snap3DConversationController = (() => {
             this.npcGenerationUI = this.npcGenerationUI;
             this.instantiator = this.instantiator;
             this.npcPrefab = this.npcPrefab;
-            this.activeNPC = null;
             this.conversationHistory = [];
             this.isProcessing = false;
             this.npcAssetURLProp = StorageProperty_1.StorageProperty.manualString("npcAssetURL", "");
@@ -91,7 +90,6 @@ let Snap3DConversationController = (() => {
             this.npcGenerationUI = this.npcGenerationUI;
             this.instantiator = this.instantiator;
             this.npcPrefab = this.npcPrefab;
-            this.activeNPC = null;
             this.conversationHistory = [];
             this.isProcessing = false;
             this.npcAssetURLProp = StorageProperty_1.StorageProperty.manualString("npcAssetURL", "");
@@ -369,6 +367,7 @@ let Snap3DConversationController = (() => {
             this.activeNPC.loadFromURL(assetURL); // ⬇️ Load model
             this.activeNPC.setPrompt(prompt);
             this.activeNPC.setSpeechBubble("👋 Synced NPC joined!");
+            //this.activeNPC.setInteractionEnabled(false);
             return npcObj;
         }
         //----------------------------------------------------------------------

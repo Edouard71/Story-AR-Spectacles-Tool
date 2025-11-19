@@ -27,7 +27,7 @@ export class SceneSetupUI extends BaseScriptComponent {
   }
 
 private notifyConversationToListen() {
-  if (this.conversationCtrl && this.conversationCtrl.restartListening) {
+  if (this.conversationCtrl.activeNPC && this.conversationCtrl.restartListening) {
     print("🔄 PropController: Restarting NPC Listening");
     this.conversationCtrl.restartListening();
   } else {

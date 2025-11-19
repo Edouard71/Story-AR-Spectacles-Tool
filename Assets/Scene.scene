@@ -483,6 +483,7 @@
       snap3DFactoryObj: !<reference.SceneObject> e2eb5afd-edf7-4812-9570-c323c00660d9
       propPrefab: !<reference.ObjectPrefab> c6ae9483-cbe7-4715-9c55-8d259841ef9d
       propGenerationUI: !<reference.SceneObject> 7cd0f19c-c335-4b6f-a7a5-747e47d19c5c
+      conversationControllerObj: !<reference.SceneObject> d1252c29-bbe1-4877-859a-39f44553f545
   ScriptTypes:
     "":
       {}
@@ -893,6 +894,7 @@
       propController: !<reference.ScriptComponent> 0af1b859-f2a2-493a-8e1a-f4b3d9788c85
       propField: !<reference.Text> 3c13bdec-55e9-4717-bb08-d25cb951a315
       propRecordBtn: !<reference.ScriptComponent> 57e06987-9a30-447e-9fec-f7d9bcb8b88b
+      conversationControllerObj: !<reference.SceneObject> d1252c29-bbe1-4877-859a-39f44553f545
   ScriptTypes:
     "":
       {}

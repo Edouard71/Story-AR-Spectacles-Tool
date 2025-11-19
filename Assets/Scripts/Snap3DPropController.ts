@@ -183,7 +183,7 @@ export class Snap3DPropController extends BaseScriptComponent {
         propComp.setNetworkId(`SharedProp_${propId}`);
         propComp.initializeSync();
         propComp.setPrompt(prompt);
-        propComp.setSpeechBubble(`Prop ${propId}`);
+        propComp.setSpeechBubble(`✨ Prop ${propId}`);
         propComp.startTransformSync();
     
         const offset = new vec3(Math.random() * 20 - 10, 0, Math.random() * 20 - 10);
@@ -268,10 +268,10 @@ export class Snap3DPropController extends BaseScriptComponent {
 
     propComp.loadFromURL(assetURL);
     propComp.setPrompt(prompt);
-    // propComp.setSpeechBubble("👀 Synced Prop");
+    propComp.setSpeechBubble("👀 Synced Prop");
+
     // propComp.startTransformSync();
-    
-    
+  
     this.activeProps.push({ id: propId, entity: null, interactable: propComp });
   }
 

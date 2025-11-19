@@ -19,7 +19,7 @@ export class Snap3DConversationController extends BaseScriptComponent {
   
 
   private factory: Snap3DInteractableFactory;
-  public activeNPC: Snap3DInteractable | null = null;
+  public activeNPC: Snap3DInteractable;
   private conversationHistory: { role: string; content: string }[] = [];
   private isProcessing = false;
   private asrOptions: any;
@@ -278,6 +278,7 @@ private spawnNPC(prompt: string = "Friendly robot with headphones") {
         }
 
         // 🧩 Grab the NPC object from factory root
+        
         const childCount = this.snap3DFactoryObj.getChildrenCount();
         const npcObj = this.snap3DFactoryObj.getChild(childCount-1);
         if (!npcObj) {
@@ -296,11 +297,10 @@ private spawnNPC(prompt: string = "Friendly robot with headphones") {
         this.activeNPC = npcComp;
         this.activeNPC.setNetworkId(`SharedNPC`);
         this.activeNPC.initializeSync();
-
         this.activeNPC.setPrompt(prompt);
         this.activeNPC.setSpeechBubble("👋 Hello, I'm your AI NPC!");
         this.activeNPC.startTransformSync();
-
+        
         const npcTransform = npcObj.getTransform();
         this.npcPositionProp.setPendingValue(npcTransform.getWorldPosition());
         this.npcRotationProp.setPendingValue(npcTransform.getWorldRotation());
@@ -359,6 +359,7 @@ private spawnNPC(prompt: string = "Friendly robot with headphones") {
     this.activeNPC.loadFromURL(assetURL);          // ⬇️ Load model
     this.activeNPC.setPrompt(prompt);
     this.activeNPC.setSpeechBubble("👋 Synced NPC joined!");
+    //this.activeNPC.setInteractionEnabled(false);
 
     return npcObj;
   }
