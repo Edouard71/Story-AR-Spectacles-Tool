@@ -26,16 +26,16 @@
   Enabled: true
   ScriptAsset: !<reference> 496f66d8-20aa-4eca-81f4-f34f77ef5e98
   ScriptInputsDefault:
-    enableRightGrabTrigger: true
-    enableLeftGrabTrigger: true
+    enableRightPalmTapTrigger: true
+    enableLeftPalmTapTrigger: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       button: !<MappingBased.AssignableType> 6a4f13b9-2180-410f-b62f-f988642ec928
       activityRenderMesh: !<reference.RenderMeshVisual> b037ad12-4f54-4210-9273-ab56db13d0f2
-      enableRightGrabTrigger: false
-      enableLeftGrabTrigger: false
+      enableRightPalmTapTrigger: false
+      enableLeftPalmTapTrigger: false
   ScriptTypes:
     "":
       {}

@@ -28,8 +28,8 @@
   ScriptInputsHidden:
     activityRenderMesh: false
     button: false
-    enableLeftGrabTrigger: false
-    enableRightGrabTrigger: false
+    enableLeftPalmTapTrigger: false
+    enableRightPalmTapTrigger: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -41,13 +41,13 @@
   DefaultScriptInputs:
     - button: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
       activityRenderMesh: !<reference.RenderMeshVisual> 00000000-0000-0000-0000-000000000000
-      enableRightGrabTrigger: false
-      enableLeftGrabTrigger: false
+      enableRightPalmTapTrigger: false
+      enableLeftPalmTapTrigger: false
   ScriptTypes:
     -
       {}
   InputLines:
     - // @input AssignableType button
     - // @input Component.RenderMeshVisual activityRenderMesh
-    - // @input bool enableRightGrabTrigger
-    - // @input bool enableLeftGrabTrigger
+    - // @input bool enableRightPalmTapTrigger
+    - // @input bool enableLeftPalmTapTrigger

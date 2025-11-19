@@ -17,6 +17,9 @@ export class SceneSetupUI extends BaseScriptComponent {
   @input("Component.ScriptComponent") propRecordBtn: BaseScriptComponent;
   @input conversationControllerObj: SceneObject;
 
+  @input private useLeftHandGesture: boolean = false;
+  @input private useRightHandGesture: boolean = true;
+
   private propDescription = "";
   private propAsrBridge: AsrBridge | null = null;
   private conversationCtrl: Snap3DConversationController;
@@ -40,6 +43,8 @@ private notifyConversationToListen() {
     if (propCtl) {
       this.propAsrBridge = propCtl;
       propCtl.onQueryEvent.add((t: string) => this.updateField("prop", t));
+      this.configureGestureForController(propCtl, "prop");
+      
       if (!propCtl.triggerVoiceCapture) {
         print(
           "[SceneSetupUI] ℹ️ triggerVoiceCapture() not exposed; gestures still fire via ASR component."
@@ -78,6 +83,24 @@ private notifyConversationToListen() {
 
     print(`[SceneSetupUI] ❌ ${tag} controller does not expose onQueryEvent`);
     return null;
+  }
+
+  private configureGestureForController(controller: AsrBridge, tag: string) {
+    if (!this.useLeftHandGesture && !this.useRightHandGesture) {
+      return;
+    }
+
+    if (controller.configureGestureTriggers) {
+      controller.configureGestureTriggers({
+        enableLeft: this.useLeftHandGesture,
+        enableRight: this.useRightHandGesture,
+      });
+      print(`[SceneSetupUI] 🖐️ Configured ${tag} gestures: Left=${this.useLeftHandGesture}, Right=${this.useRightHandGesture}`);
+    } else {
+      print(
+        `[SceneSetupUI] ⚠️ ${tag} controller cannot configure gesture triggers at runtime — enable them via inspector on the ASR component.`
+      );
+    }
   }
 
   private updateField(field: string, text: string) {

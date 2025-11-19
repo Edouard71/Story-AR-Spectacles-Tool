@@ -16,9 +16,9 @@ export class ASRQueryController extends BaseScriptComponent {
   @input
   private activityRenderMesh: RenderMeshVisual;
   @input
-  private enableRightGrabTrigger: boolean = false;
+  private enableRightPalmTapTrigger: boolean = false;
   @input
-  private enableLeftGrabTrigger: boolean = false;
+  private enableLeftPalmTapTrigger: boolean = false;
   private activityMaterial: Material;
 
   private asrModule: AsrModule = require("LensStudio:AsrModule");
@@ -91,6 +91,7 @@ export class ASRQueryController extends BaseScriptComponent {
   }
 
   public triggerVoiceCaptureFromGesture(hand: "left" | "right" | "gesture" = "gesture") {
+    print(`[ASRQueryController] Gesture detected from: ${hand}`);
     const label =
       hand === "left"
         ? "gesture-left"
@@ -106,11 +107,11 @@ export class ASRQueryController extends BaseScriptComponent {
   }) {
     let changed = false;
     if (typeof options.enableRight === "boolean") {
-      this.enableRightGrabTrigger = options.enableRight;
+      this.enableRightPalmTapTrigger = options.enableRight;
       changed = true;
     }
     if (typeof options.enableLeft === "boolean") {
-      this.enableLeftGrabTrigger = options.enableLeft;
+      this.enableLeftPalmTapTrigger = options.enableLeft;
       changed = true;
     }
     if (changed) {
@@ -154,8 +155,8 @@ export class ASRQueryController extends BaseScriptComponent {
   }
 
   private ensureGestureModule(): boolean {
-    if (!this.gestureModule || !this.gestureModule.getGrabBeginEvent) {
-      print("[ASRQueryController] GestureModule unavailable.");
+    if (!this.gestureModule || !this.gestureModule.getPalmTapDownEvent) {
+      print("[ASRQueryController] GestureModule unavailable or missing getPalmTapDownEvent.");
       return false;
     }
 
@@ -182,7 +183,7 @@ export class ASRQueryController extends BaseScriptComponent {
         this.rightGrabEvent.remove(this.rightGrabHandler);
       }
     } catch (e) {
-      print(`[ASRQueryController] ⚠️ Failed to remove right grab handler: ${e}`);
+      print(`[ASRQueryController] ⚠️ Failed to remove right palm tap handler: ${e}`);
     }
     try {
       if (this.leftGrabBinding && this.leftGrabBinding.remove) {
@@ -191,7 +192,7 @@ export class ASRQueryController extends BaseScriptComponent {
         this.leftGrabEvent.remove(this.leftGrabHandler);
       }
     } catch (e) {
-      print(`[ASRQueryController] ⚠️ Failed to remove left grab handler: ${e}`);
+      print(`[ASRQueryController] ⚠️ Failed to remove left palm tap handler: ${e}`);
     }
     this.rightGrabEvent = null;
     this.rightGrabHandler = null;
@@ -205,19 +206,20 @@ export class ASRQueryController extends BaseScriptComponent {
     if (this.rightGrabHandler) {
       return;
     }
-    if (!this.enableRightGrabTrigger) {
+    if (!this.enableRightPalmTapTrigger) {
       return;
     }
-    this.rightGrabEvent = this.gestureModule.getGrabBeginEvent(this.gestureHandType.Right);
+    this.rightGrabEvent = this.gestureModule.getPalmTapDownEvent(this.gestureHandType.Right);
     if (!this.rightGrabEvent || !this.rightGrabEvent.add) {
-      print("[ASRQueryController] Failed to subscribe to right grab event.");
+      print("[ASRQueryController] Failed to subscribe to right palm tap event.");
       this.rightGrabEvent = null;
       return;
     }
     this.rightGrabHandler = () => {
-      if (!this.enableRightGrabTrigger) {
+      if (!this.enableRightPalmTapTrigger) {
         return;
       }
+      print("[ASRQueryController] Right Palm Tap (Right Index -> Left Palm) detected.");
       this.triggerVoiceCaptureFromGesture("right");
     };
     this.rightGrabBinding = this.rightGrabEvent.add(this.rightGrabHandler);
@@ -227,19 +229,20 @@ export class ASRQueryController extends BaseScriptComponent {
     if (this.leftGrabHandler) {
       return;
     }
-    if (!this.enableLeftGrabTrigger) {
+    if (!this.enableLeftPalmTapTrigger) {
       return;
     }
-    this.leftGrabEvent = this.gestureModule.getGrabBeginEvent(this.gestureHandType.Left);
+    this.leftGrabEvent = this.gestureModule.getPalmTapDownEvent(this.gestureHandType.Left);
     if (!this.leftGrabEvent || !this.leftGrabEvent.add) {
-      print("[ASRQueryController] Failed to subscribe to left grab event.");
+      print("[ASRQueryController] Failed to subscribe to left palm tap event.");
       this.leftGrabEvent = null;
       return;
     }
     this.leftGrabHandler = () => {
-      if (!this.enableLeftGrabTrigger) {
+      if (!this.enableLeftPalmTapTrigger) {
         return;
       }
+      print("[ASRQueryController] Left Palm Tap (Left Index -> Right Palm) detected.");
       this.triggerVoiceCaptureFromGesture("left");
     };
     this.leftGrabBinding = this.leftGrabEvent.add(this.leftGrabHandler);

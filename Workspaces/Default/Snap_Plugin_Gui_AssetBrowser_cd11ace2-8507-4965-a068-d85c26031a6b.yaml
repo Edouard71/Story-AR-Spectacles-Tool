@@ -1,11 +1,15 @@
 CollapsedEntities:
   type: stringset
   value:
-    size: 927
+    size: 1001
     values:
+      - ""
+      - Base.png
       - Converse.js
       - Internet Module.internetModule
       - LSTween.lspkg
+      - LSTween.lspkg/Examples
+      - LSTween.lspkg/Examples/Assets
       - LSTween.lspkg/Examples/Assets/Box.mesh
       - LSTween.lspkg/Examples/Assets/Simple Diffuse.mat
       - LSTween.lspkg/Examples/Assets/Simple Diffuse.ss_graph
@@ -17,6 +21,8 @@ CollapsedEntities:
       - LSTween.lspkg/Examples/Scripts/Example_YoyoTween.ts
       - LSTween.lspkg/LSTween.ts
       - LSTween.lspkg/RotationInterpolationType.ts
+      - LSTween.lspkg/TweenJS
+      - LSTween.lspkg/TweenJS/Easing.ts
       - LSTween.lspkg/TweenJS/Group.ts
       - LSTween.lspkg/TweenJS/Index.ts
       - LSTween.lspkg/TweenJS/Interpolation.ts
@@ -109,12 +115,15 @@ CollapsedEntities:
       - Render/Echopark.hdr/Specular
       - Render/Render Target.renderTarget
       - Scene.scene
+      - Scripts
       - Scripts/APIKeyHint.ts
       - Scripts/ASRQueryController.ts
+      - Scripts/GeminiAssistant.ts
       - Scripts/ImageGenerator.ts
       - Scripts/InteractableImageGenerator.ts
       - Scripts/InteractableSnap3DGenerator.ts
       - Scripts/InternetAvailabilityPopUp.ts
+      - Scripts/OpenAIAssistant.ts
       - Scripts/PropSetupUI.ts
       - Scripts/SceneSetupUI.ts
       - Scripts/Snap3DConversationController.ts
@@ -125,10 +134,13 @@ CollapsedEntities:
       - Snap3DHelper.js
       - Snap3DInteractable.prefab
       - SpectaclesInteractionKit.lspkg
+      - SpectaclesInteractionKit.lspkg/Assets
       - SpectaclesInteractionKit.lspkg/Assets/Audio
       - SpectaclesInteractionKit.lspkg/Assets/Audio/HoverAudioTrack.wav
       - SpectaclesInteractionKit.lspkg/Assets/Audio/TriggerEndAudioTrack.wav
       - SpectaclesInteractionKit.lspkg/Assets/Audio/TriggerStartAudioTrack.wav
+      - SpectaclesInteractionKit.lspkg/Assets/Materials
+      - SpectaclesInteractionKit.lspkg/Assets/Materials/BaseHandVisualsMaterials
       - SpectaclesInteractionKit.lspkg/Assets/Materials/BaseHandVisualsMaterials/FingerHighlightLeft.mat
       - SpectaclesInteractionKit.lspkg/Assets/Materials/BaseHandVisualsMaterials/FingerHighlightRight.mat
       - SpectaclesInteractionKit.lspkg/Assets/Materials/BaseHandVisualsMaterials/FingerTipGlow.mat
@@ -138,6 +150,7 @@ CollapsedEntities:
       - SpectaclesInteractionKit.lspkg/Assets/Materials/BitmojiMaterial.mat
       - SpectaclesInteractionKit.lspkg/Assets/Materials/ContainerImageMaterial.mat
       - SpectaclesInteractionKit.lspkg/Assets/Materials/LogoMaterial.mat
+      - SpectaclesInteractionKit.lspkg/Assets/Materials/NormalBasedTargetOutline.mat
       - SpectaclesInteractionKit.lspkg/Assets/Materials/PinchButtonDarkInactive.mat
       - SpectaclesInteractionKit.lspkg/Assets/Materials/PinchButtonDarkRadial.mat
       - SpectaclesInteractionKit.lspkg/Assets/Materials/PinchButtonToggleOffIcon.mat
@@ -168,6 +181,7 @@ CollapsedEntities:
       - SpectaclesInteractionKit.lspkg/Assets/Materials/PlatformUI/ToggleButtonToggledIdle.mat
       - SpectaclesInteractionKit.lspkg/Assets/Materials/PlatformUI/ToggleButtonToggledPinched.mat
       - SpectaclesInteractionKit.lspkg/Assets/Materials/RayMaterial.mat
+      - SpectaclesInteractionKit.lspkg/Assets/Materials/ScaleBasedTargetOutline.mat
       - SpectaclesInteractionKit.lspkg/Assets/Materials/ScrollBarButton.mat
       - SpectaclesInteractionKit.lspkg/Assets/Materials/ScrollBarSlider.mat
       - SpectaclesInteractionKit.lspkg/Assets/Materials/SimplePBRMaterial.mat
@@ -207,11 +221,14 @@ CollapsedEntities:
       - SpectaclesInteractionKit.lspkg/Assets/Meshes/SnapGhost_Mesh.mesh
       - SpectaclesInteractionKit.lspkg/Assets/Meshes/SphereMesh.mesh
       - SpectaclesInteractionKit.lspkg/Assets/Meshes/Uncheck.mesh
+      - SpectaclesInteractionKit.lspkg/Assets/Shaders
+      - SpectaclesInteractionKit.lspkg/Assets/Shaders/BaseHandVisualsShaders
       - SpectaclesInteractionKit.lspkg/Assets/Shaders/BaseHandVisualsShaders/FingerHighlightAdd.ss_graph
       - SpectaclesInteractionKit.lspkg/Assets/Shaders/BaseHandVisualsShaders/FingerHighlightOpaque.ss_graph
       - SpectaclesInteractionKit.lspkg/Assets/Shaders/BaseHandVisualsShaders/FingerTipGlow.ss_graph
       - SpectaclesInteractionKit.lspkg/Assets/Shaders/BaseHandVisualsShaders/HandOccluder.ss_graph
       - SpectaclesInteractionKit.lspkg/Assets/Shaders/BaseHandVisualsShaders/NoDraw.ss_graph
+      - SpectaclesInteractionKit.lspkg/Assets/Shaders/NormalBasedTargetOutline.ss_graph
       - SpectaclesInteractionKit.lspkg/Assets/Shaders/PinchButton-ActiveOrInActive.ss_graph
       - SpectaclesInteractionKit.lspkg/Assets/Shaders/PinchDarkRadial.ss_graph
       - SpectaclesInteractionKit.lspkg/Assets/Shaders/PlatformUI
@@ -235,6 +252,7 @@ CollapsedEntities:
       - SpectaclesInteractionKit.lspkg/Assets/Shaders/PlatformUI/StateButtonToggledHover.ss_graph
       - SpectaclesInteractionKit.lspkg/Assets/Shaders/PlatformUI/StateButtonToggledPinched.ss_graph
       - SpectaclesInteractionKit.lspkg/Assets/Shaders/RayShader.ss_graph
+      - SpectaclesInteractionKit.lspkg/Assets/Shaders/ScaleBasedTargetOutline.ss_graph
       - SpectaclesInteractionKit.lspkg/Assets/Shaders/ScrollBarSlider.ss_graph
       - SpectaclesInteractionKit.lspkg/Assets/Shaders/SliderShaders
       - SpectaclesInteractionKit.lspkg/Assets/Shaders/SliderShaders/PinchButton-Default.ss_graph
@@ -246,16 +264,22 @@ CollapsedEntities:
       - SpectaclesInteractionKit.lspkg/Assets/Shaders/ToggleOn.ss_graph
       - SpectaclesInteractionKit.lspkg/Assets/Shaders/ToggleOnSelect.ss_graph
       - SpectaclesInteractionKit.lspkg/Assets/Shaders/simple_pbr.ss_graph
+      - SpectaclesInteractionKit.lspkg/Assets/Textures
       - SpectaclesInteractionKit.lspkg/Assets/Textures/2DBitmojiAvatar.png
+      - SpectaclesInteractionKit.lspkg/Assets/Textures/Base.png
+      - SpectaclesInteractionKit.lspkg/Assets/Textures/BaseHandVisualsTextures
       - SpectaclesInteractionKit.lspkg/Assets/Textures/BaseHandVisualsTextures/Glow.png
+      - SpectaclesInteractionKit.lspkg/Assets/Textures/BaseHandVisualsTextures/MaskMap.png
       - SpectaclesInteractionKit.lspkg/Assets/Textures/MaterialParams.png
       - SpectaclesInteractionKit.lspkg/Assets/Textures/Normal.png
+      - SpectaclesInteractionKit.lspkg/Assets/Textures/PlatformUI
       - SpectaclesInteractionKit.lspkg/Assets/Textures/PlatformUI/ArrowDown.png
       - SpectaclesInteractionKit.lspkg/Assets/Textures/PlatformUI/ArrowUp.png
       - SpectaclesInteractionKit.lspkg/Assets/Textures/PlatformUI/Close.png
       - SpectaclesInteractionKit.lspkg/Assets/Textures/PlatformUI/FollowIconBlack.png
       - SpectaclesInteractionKit.lspkg/Assets/Textures/PlatformUI/FollowIconWhite.png
       - SpectaclesInteractionKit.lspkg/Assets/Textures/PlatformUI/Image.png
+      - SpectaclesInteractionKit.lspkg/Assets/Textures/PlatformUI/Mask_simple_reflection_ellipse.png
       - SpectaclesInteractionKit.lspkg/Assets/Textures/PlatformUI/SimpleIdle.jpg
       - SpectaclesInteractionKit.lspkg/Assets/Textures/PlatformUI/SimpleIdle_05.jpg
       - SpectaclesInteractionKit.lspkg/Assets/Textures/PlatformUI/SimpleRefl_02.jpg
@@ -388,6 +412,7 @@ CollapsedEntities:
       - SpectaclesInteractionKit.lspkg/Components/UI/Slider/Slider.ts
       - SpectaclesInteractionKit.lspkg/Components/UI/ToggleButton
       - SpectaclesInteractionKit.lspkg/Components/UI/ToggleButton/ToggleButton.ts
+      - SpectaclesInteractionKit.lspkg/Core
       - SpectaclesInteractionKit.lspkg/Core/ConfigurationValidator
       - SpectaclesInteractionKit.lspkg/Core/ConfigurationValidator/ConfigurationValidator.ts
       - SpectaclesInteractionKit.lspkg/Core/HandInteractor
@@ -395,6 +420,8 @@ CollapsedEntities:
       - SpectaclesInteractionKit.lspkg/Core/InteractionManager
       - SpectaclesInteractionKit.lspkg/Core/InteractionManager/EventDispatcher.ts
       - SpectaclesInteractionKit.lspkg/Core/InteractionManager/InteractionManager.ts
+      - SpectaclesInteractionKit.lspkg/Core/Interactor
+      - SpectaclesInteractionKit.lspkg/Core/Interactor/BaseInteractor.ts
       - SpectaclesInteractionKit.lspkg/Core/Interactor/ColliderTargetProvider.ts
       - SpectaclesInteractionKit.lspkg/Core/Interactor/DirectTargetProvider.ts
       - SpectaclesInteractionKit.lspkg/Core/Interactor/DragProvider.ts
@@ -407,10 +434,13 @@ CollapsedEntities:
       - SpectaclesInteractionKit.lspkg/Core/Interactor/PokeTargetProvider.ts
       - SpectaclesInteractionKit.lspkg/Core/Interactor/RayProvider.ts
       - SpectaclesInteractionKit.lspkg/Core/Interactor/TouchRayProvider.ts
+      - SpectaclesInteractionKit.lspkg/Core/Interactor/raycastAlgorithms
       - SpectaclesInteractionKit.lspkg/Core/Interactor/raycastAlgorithms/AxisAngle.ts
       - SpectaclesInteractionKit.lspkg/Core/Interactor/raycastAlgorithms/ContinousIrInteractionTransition.ts
       - SpectaclesInteractionKit.lspkg/Core/Interactor/raycastAlgorithms/IrInteractionTransition.ts
       - SpectaclesInteractionKit.lspkg/Core/Interactor/raycastAlgorithms/PinchJumpSuppressor.ts
+      - SpectaclesInteractionKit.lspkg/Core/Interactor/raycastAlgorithms/RaycastBase.ts
+      - SpectaclesInteractionKit.lspkg/Core/Interactor/raycastAlgorithms/RaycastProxy.ts
       - SpectaclesInteractionKit.lspkg/Core/Interactor/raycastAlgorithms/RgbIrTransitionJumpSuppressor.ts
       - SpectaclesInteractionKit.lspkg/Core/Interactor/raycastAlgorithms/SwitchIrInteractionTransition.ts
       - SpectaclesInteractionKit.lspkg/Core/Interactor/raycastAlgorithms/TimeDataContainer.ts
@@ -433,11 +463,18 @@ CollapsedEntities:
       - SpectaclesInteractionKit.lspkg/Prefabs
       - SpectaclesInteractionKit.lspkg/Prefabs/ScrollViewListItem.prefab
       - SpectaclesInteractionKit.lspkg/Prefabs/SpectaclesInteractionKit.prefab
+      - SpectaclesInteractionKit.lspkg/Providers
+      - SpectaclesInteractionKit.lspkg/Providers/CameraProvider
       - SpectaclesInteractionKit.lspkg/Providers/CameraProvider/ARCameraFinderProvider.ts
+      - SpectaclesInteractionKit.lspkg/Providers/CameraProvider/BaseCameraFinderProvider.ts
+      - SpectaclesInteractionKit.lspkg/Providers/CameraProvider/BaseWorldCameraProvider.ts
       - SpectaclesInteractionKit.lspkg/Providers/CameraProvider/CameraProvider.ts
       - SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider.ts
       - SpectaclesInteractionKit.lspkg/Providers/CursorControllerProvider
       - SpectaclesInteractionKit.lspkg/Providers/CursorControllerProvider/CursorControllerProvider.ts
+      - SpectaclesInteractionKit.lspkg/Providers/HandInputData
+      - SpectaclesInteractionKit.lspkg/Providers/HandInputData/BaseHand.ts
+      - SpectaclesInteractionKit.lspkg/Providers/HandInputData/DefaultHandTrackingAssetProvider.ts
       - SpectaclesInteractionKit.lspkg/Providers/HandInputData/GestureProvider
       - SpectaclesInteractionKit.lspkg/Providers/HandInputData/GestureProvider/GestureModuleProvider.ts
       - SpectaclesInteractionKit.lspkg/Providers/HandInputData/GestureProvider/PalmTapDetection
@@ -453,11 +490,14 @@ CollapsedEntities:
       - SpectaclesInteractionKit.lspkg/Providers/HandInputData/GestureProvider/PinchDetection/PinchDetectorStateMachine.ts
       - SpectaclesInteractionKit.lspkg/Providers/HandInputData/GestureProvider/PinchEventType.ts
       - SpectaclesInteractionKit.lspkg/Providers/HandInputData/HandInputData.ts
+      - SpectaclesInteractionKit.lspkg/Providers/HandInputData/HandTrackingAssetProvider.ts
       - SpectaclesInteractionKit.lspkg/Providers/HandInputData/HandType.ts
       - SpectaclesInteractionKit.lspkg/Providers/HandInputData/HandVisuals.ts
       - SpectaclesInteractionKit.lspkg/Providers/HandInputData/Joints.ts
       - SpectaclesInteractionKit.lspkg/Providers/HandInputData/Keypoint.ts
       - SpectaclesInteractionKit.lspkg/Providers/HandInputData/LandmarkNames.ts
+      - SpectaclesInteractionKit.lspkg/Providers/HandInputData/LeftHandAsset.handTracking3D
+      - SpectaclesInteractionKit.lspkg/Providers/HandInputData/RightHandAsset.handTracking3D
       - SpectaclesInteractionKit.lspkg/Providers/HandInputData/TrackedHand.ts
       - SpectaclesInteractionKit.lspkg/Providers/InteractionConfigurationProvider
       - SpectaclesInteractionKit.lspkg/Providers/InteractionConfigurationProvider/InteractionConfigurationProvider.ts
@@ -515,6 +555,7 @@ CollapsedEntities:
       - SpectaclesInteractionKit.lspkg/VersionNumber.ts
       - SpectaclesInteractionKit.lspkg/package.native
       - SpectaclesInteractionKit.lspkg/tsconfig.json
+      - SpectaclesSyncKit 2.lspkg
       - SpectaclesSyncKit 2.lspkg/Assets
       - SpectaclesSyncKit 2.lspkg/Assets/Animations
       - SpectaclesSyncKit 2.lspkg/Assets/Animations/Scene.animationAsset
@@ -646,6 +687,7 @@ CollapsedEntities:
       - SpectaclesSyncKit 2.lspkg/package.native
       - SpectaclesSyncKit 2.lspkg/package_dependencies.json
       - SpectaclesSyncKit.lspkg
+      - SpectaclesSyncKit.lspkg/Assets
       - SpectaclesSyncKit.lspkg/Assets/Animations
       - SpectaclesSyncKit.lspkg/Assets/Animations/Scene.animationAsset
       - SpectaclesSyncKit.lspkg/Assets/Materials
@@ -702,28 +744,41 @@ CollapsedEntities:
       - SpectaclesSyncKit.lspkg/CustomLandmarkGuidance/CustomLandmarkGuidanceBinding.ts
       - SpectaclesSyncKit.lspkg/CustomLandmarkGuidance/GuidanceCopy.ts
       - SpectaclesSyncKit.lspkg/CustomLandmarkGuidance/SimplifiedLandmarkGuidance.ts
+      - SpectaclesSyncKit.lspkg/Examples
       - SpectaclesSyncKit.lspkg/Examples/CustomLandmarkGuidanceExample.ts
       - SpectaclesSyncKit.lspkg/Examples/CyclingMaterialExample.ts
       - SpectaclesSyncKit.lspkg/Examples/DisplayStorageProperty
       - SpectaclesSyncKit.lspkg/Examples/DisplayStorageProperty/CurrentTimeObject.ts
       - SpectaclesSyncKit.lspkg/Examples/GetSnapchatUserExample.ts
+      - SpectaclesSyncKit.lspkg/Examples/GetSnapchatUserExampleJavascript.js
       - SpectaclesSyncKit.lspkg/Examples/InstantiateOnceExample.ts
       - SpectaclesSyncKit.lspkg/Examples/InstantiatorExample.ts
+      - SpectaclesSyncKit.lspkg/Examples/InstantiatorExampleJavascript.js
       - SpectaclesSyncKit.lspkg/Examples/ManipulateExamplePrefab.prefab
       - SpectaclesSyncKit.lspkg/Examples/Materials
       - SpectaclesSyncKit.lspkg/Examples/Materials/ExampleMaterial.mat
       - SpectaclesSyncKit.lspkg/Examples/Materials/ExampleMaterial.ss_graph
       - SpectaclesSyncKit.lspkg/Examples/SessionControllerExample.ts
+      - SpectaclesSyncKit.lspkg/Examples/SessionControllerExampleJavascript.js
+      - SpectaclesSyncKit.lspkg/Examples/StorageProperty
       - SpectaclesSyncKit.lspkg/Examples/StorageProperty/AutoStoragePropertyExample.ts
+      - SpectaclesSyncKit.lspkg/Examples/StorageProperty/AutoStoragePropertyExampleJavascript.js
       - SpectaclesSyncKit.lspkg/Examples/StorageProperty/ManualStoragePropertyExample.ts
+      - SpectaclesSyncKit.lspkg/Examples/StorageProperty/ManualStoragePropertyExampleJavascript.js
       - SpectaclesSyncKit.lspkg/Examples/StorageProperty/PositionRotationScaleStoragePropertyExample.ts
+      - SpectaclesSyncKit.lspkg/Examples/StorageProperty/PositionRotationScaleStoragePropertyExampleJavascript.js
       - SpectaclesSyncKit.lspkg/Examples/StorageProperty/RmvColorStoragePropertyExample.ts
+      - SpectaclesSyncKit.lspkg/Examples/StorageProperty/RmvColorStoragePropertyExampleJavascript.js
       - SpectaclesSyncKit.lspkg/Examples/StorageProperty/RmvPropertyStoragePropertyExample.ts
+      - SpectaclesSyncKit.lspkg/Examples/StorageProperty/RmvPropertyStoragePropertyExampleJavascript.js
       - SpectaclesSyncKit.lspkg/Examples/StorageProperty/TextStoragePropertyExample.ts
+      - SpectaclesSyncKit.lspkg/Examples/StorageProperty/TextStoragePropertyExampleJavascript.js
       - SpectaclesSyncKit.lspkg/Examples/StorageProperty/TransformStoragePropertyExample.ts
+      - SpectaclesSyncKit.lspkg/Examples/StorageProperty/TransformStoragePropertyExampleJavascript.js
       - SpectaclesSyncKit.lspkg/Examples/SyncEntityDebug
       - SpectaclesSyncKit.lspkg/Examples/SyncEntityDebug/InstantiatedSyncEntityDebugExample.prefab
       - SpectaclesSyncKit.lspkg/Examples/SyncEntityExample.ts
+      - SpectaclesSyncKit.lspkg/Examples/SyncEntityExampleJavascript.js
       - SpectaclesSyncKit.lspkg/Location Cloud Storage Module.locationCloudStorageModule
       - SpectaclesSyncKit.lspkg/Readme.md
       - SpectaclesSyncKit.lspkg/SpectaclesSyncKit.prefab
@@ -769,8 +824,13 @@ CollapsedEntities:
       - SpectaclesUIKit.lspkg/Audio/SliderProgressionAudioTrack.wav
       - SpectaclesUIKit.lspkg/Audio/TriggerEndAudioTrack.wav
       - SpectaclesUIKit.lspkg/Audio/TriggerStartAudioTrack.wav
+      - SpectaclesUIKit.lspkg/Materials
+      - SpectaclesUIKit.lspkg/Materials/BaseRoundedRectangle.mat
+      - SpectaclesUIKit.lspkg/Materials/BaseRoundedRectangle.ss_graph
       - SpectaclesUIKit.lspkg/Materials/CapsuleSphere.mat
       - SpectaclesUIKit.lspkg/Materials/CapsuleSphere.ss_graph
+      - SpectaclesUIKit.lspkg/Materials/CapsuleSphereDarkGlass.mat
+      - SpectaclesUIKit.lspkg/Materials/CapsuleSphereDarkGlass.ss_graph
       - SpectaclesUIKit.lspkg/Materials/CapsuleSphereTextField.mat
       - SpectaclesUIKit.lspkg/Materials/CapsuleSphereTextField.ss_graph
       - SpectaclesUIKit.lspkg/Materials/ConfirmationSlider.mat
@@ -796,6 +856,8 @@ CollapsedEntities:
       - SpectaclesUIKit.lspkg/Materials/ImageShader.ss_graph
       - SpectaclesUIKit.lspkg/Materials/RoundedRectangleStroke.mat
       - SpectaclesUIKit.lspkg/Materials/RoundedRectangleStrokeShader.ss_graph
+      - SpectaclesUIKit.lspkg/Materials/ScrollWindowFadeMask.mat
+      - SpectaclesUIKit.lspkg/Materials/ScrollWindowFadeMaskShader.ss_graph
       - SpectaclesUIKit.lspkg/Meshes
       - SpectaclesUIKit.lspkg/Meshes/CapsuleSphere.mesh
       - SpectaclesUIKit.lspkg/Meshes/DefaultButton.mesh
@@ -813,7 +875,11 @@ CollapsedEntities:
       - SpectaclesUIKit.lspkg/Prefabs/LabelledButton.prefab
       - SpectaclesUIKit.lspkg/Prefabs/LabelledToggle.prefab
       - SpectaclesUIKit.lspkg/README.md
+      - SpectaclesUIKit.lspkg/Scripts
       - SpectaclesUIKit.lspkg/Scripts/BackPlate.ts
+      - SpectaclesUIKit.lspkg/Scripts/Components
+      - SpectaclesUIKit.lspkg/Scripts/Components/Button
+      - SpectaclesUIKit.lspkg/Scripts/Components/Button/BaseButton.ts
       - SpectaclesUIKit.lspkg/Scripts/Components/Button/CapsuleButton.ts
       - SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton.ts
       - SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton.ts
@@ -840,6 +906,8 @@ CollapsedEntities:
       - SpectaclesUIKit.lspkg/Scripts/Components/TextInputField
       - SpectaclesUIKit.lspkg/Scripts/Components/TextInputField/TextInputField.ts
       - SpectaclesUIKit.lspkg/Scripts/Components/TextInputField/TextInputFieldManager.ts
+      - SpectaclesUIKit.lspkg/Scripts/Components/Toggle
+      - SpectaclesUIKit.lspkg/Scripts/Components/Toggle/BaseToggleGroup.ts
       - SpectaclesUIKit.lspkg/Scripts/Components/Toggle/SwitchToggleGroup.ts
       - SpectaclesUIKit.lspkg/Scripts/Components/Toggle/ToggleGroup.ts
       - SpectaclesUIKit.lspkg/Scripts/Components/Toggle/Toggleable.ts
@@ -905,7 +973,13 @@ CollapsedEntities:
       - SpectaclesUIKit.lspkg/package_dependencies.json
       - Sphere.mesh
       - Visuals
+      - Visuals/AI Visual
+      - Visuals/AI Visual/Animations
+      - Visuals/AI Visual/Animations/BaseLayer.animationMixerLayer
       - Visuals/AI Visual/Animations/Constraint_rotation_45.animationLayer
+      - Visuals/AI Visual/Materials
+      - Visuals/AI Visual/Materials/Assist_sphere_Idle_L_T_T.mat
+      - Visuals/AI Visual/Materials/Assist_sphere_Idle_L_T_T.ss_graph
       - Visuals/AI Visual/Materials/HoverColor.mat
       - Visuals/AI Visual/Materials/HoverColor.ss_graph
       - Visuals/AI Visual/Meshes

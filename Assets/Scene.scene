@@ -886,7 +886,8 @@
   Enabled: true
   ScriptAsset: !<reference> fdf10448-230b-4258-a179-e125724250ad
   ScriptInputsDefault:
-    {}
+    useLeftHandGesture: true
+    useRightHandGesture: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -895,6 +896,8 @@
       propField: !<reference.Text> 3c13bdec-55e9-4717-bb08-d25cb951a315
       propRecordBtn: !<reference.ScriptComponent> 57e06987-9a30-447e-9fec-f7d9bcb8b88b
       conversationControllerObj: !<reference.SceneObject> d1252c29-bbe1-4877-859a-39f44553f545
+      useLeftHandGesture: false
+      useRightHandGesture: true
   ScriptTypes:
     "":
       {}
@@ -2857,15 +2860,15 @@
   Enabled: true
   ScriptAsset: !<reference> 496f66d8-20aa-4eca-81f4-f34f77ef5e98
   ScriptInputsDefault:
-    enableLeftGrabTrigger: true
+    enableRightPalmTapTrigger: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       button: !<MappingBased.AssignableType> f1393d69-691f-4f5d-8a37-0f9d304066e1
       activityRenderMesh: !<reference.RenderMeshVisual> 3781172b-6a65-4353-be26-922b1e74822d
-      enableRightGrabTrigger: true
-      enableLeftGrabTrigger: false
+      enableRightPalmTapTrigger: false
+      enableLeftPalmTapTrigger: true
   ScriptTypes:
     "":
       {}
@@ -5836,15 +5839,15 @@
   Enabled: true
   ScriptAsset: !<reference> 496f66d8-20aa-4eca-81f4-f34f77ef5e98
   ScriptInputsDefault:
-    enableRightGrabTrigger: true
+    enableLeftPalmTapTrigger: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       button: !<MappingBased.AssignableType> 041b4202-3285-49a0-a393-3dfdcb9e27b8
       activityRenderMesh: !<reference.RenderMeshVisual> c8584329-2b66-47bf-996b-78285d04d33b
-      enableRightGrabTrigger: false
-      enableLeftGrabTrigger: true
+      enableRightPalmTapTrigger: true
+      enableLeftPalmTapTrigger: false
   ScriptTypes:
     "":
       {}

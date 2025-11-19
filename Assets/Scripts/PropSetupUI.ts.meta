@@ -30,6 +30,8 @@
     propController: false
     propField: false
     propRecordBtn: false
+    useLeftHandGesture: false
+    useRightHandGesture: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -43,6 +45,8 @@
       propField: !<reference.Text> 00000000-0000-0000-0000-000000000000
       propRecordBtn: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
       conversationControllerObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      useLeftHandGesture: false
+      useRightHandGesture: true
   ScriptTypes:
     -
       {}
@@ -51,3 +55,5 @@
     - // @input Component.Text propField
     - // @input Component.ScriptComponent propRecordBtn
     - // @input SceneObject conversationControllerObj
+    - // @input bool useLeftHandGesture
+    - // @input bool useRightHandGesture = true

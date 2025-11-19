@@ -63,8 +63,8 @@ let ASRQueryController = (() => {
             super();
             this.button = this.button;
             this.activityRenderMesh = this.activityRenderMesh;
-            this.enableRightGrabTrigger = this.enableRightGrabTrigger;
-            this.enableLeftGrabTrigger = this.enableLeftGrabTrigger;
+            this.enableRightPalmTapTrigger = this.enableRightPalmTapTrigger;
+            this.enableLeftPalmTapTrigger = this.enableLeftPalmTapTrigger;
             this.asrModule = require("LensStudio:AsrModule");
             this.gestureModule = require("LensStudio:GestureModule");
             this.isRecording = false;
@@ -83,8 +83,8 @@ let ASRQueryController = (() => {
             super.__initialize();
             this.button = this.button;
             this.activityRenderMesh = this.activityRenderMesh;
-            this.enableRightGrabTrigger = this.enableRightGrabTrigger;
-            this.enableLeftGrabTrigger = this.enableLeftGrabTrigger;
+            this.enableRightPalmTapTrigger = this.enableRightPalmTapTrigger;
+            this.enableLeftPalmTapTrigger = this.enableLeftPalmTapTrigger;
             this.asrModule = require("LensStudio:AsrModule");
             this.gestureModule = require("LensStudio:GestureModule");
             this.isRecording = false;
@@ -148,6 +148,7 @@ let ASRQueryController = (() => {
             });
         }
         triggerVoiceCaptureFromGesture(hand = "gesture") {
+            print(`[ASRQueryController] Gesture detected from: ${hand}`);
             const label = hand === "left"
                 ? "gesture-left"
                 : hand === "right"
@@ -158,11 +159,11 @@ let ASRQueryController = (() => {
         configureGestureTriggers(options) {
             let changed = false;
             if (typeof options.enableRight === "boolean") {
-                this.enableRightGrabTrigger = options.enableRight;
+                this.enableRightPalmTapTrigger = options.enableRight;
                 changed = true;
             }
             if (typeof options.enableLeft === "boolean") {
-                this.enableLeftGrabTrigger = options.enableLeft;
+                this.enableLeftPalmTapTrigger = options.enableLeft;
                 changed = true;
             }
             if (changed) {
@@ -202,8 +203,8 @@ let ASRQueryController = (() => {
             this.ensureLeftGestureSubscription();
         }
         ensureGestureModule() {
-            if (!this.gestureModule || !this.gestureModule.getGrabBeginEvent) {
-                print("[ASRQueryController] GestureModule unavailable.");
+            if (!this.gestureModule || !this.gestureModule.getPalmTapDownEvent) {
+                print("[ASRQueryController] GestureModule unavailable or missing getPalmTapDownEvent.");
                 return false;
             }
             if (!this.gestureHandType) {
@@ -228,7 +229,7 @@ let ASRQueryController = (() => {
                 }
             }
             catch (e) {
-                print(`[ASRQueryController] ⚠️ Failed to remove right grab handler: ${e}`);
+                print(`[ASRQueryController] ⚠️ Failed to remove right palm tap handler: ${e}`);
             }
             try {
                 if (this.leftGrabBinding && this.leftGrabBinding.remove) {
@@ -239,7 +240,7 @@ let ASRQueryController = (() => {
                 }
             }
             catch (e) {
-                print(`[ASRQueryController] ⚠️ Failed to remove left grab handler: ${e}`);
+                print(`[ASRQueryController] ⚠️ Failed to remove left palm tap handler: ${e}`);
             }
             this.rightGrabEvent = null;
             this.rightGrabHandler = null;
@@ -252,19 +253,20 @@ let ASRQueryController = (() => {
             if (this.rightGrabHandler) {
                 return;
             }
-            if (!this.enableRightGrabTrigger) {
+            if (!this.enableRightPalmTapTrigger) {
                 return;
             }
-            this.rightGrabEvent = this.gestureModule.getGrabBeginEvent(this.gestureHandType.Right);
+            this.rightGrabEvent = this.gestureModule.getPalmTapDownEvent(this.gestureHandType.Right);
             if (!this.rightGrabEvent || !this.rightGrabEvent.add) {
-                print("[ASRQueryController] Failed to subscribe to right grab event.");
+                print("[ASRQueryController] Failed to subscribe to right palm tap event.");
                 this.rightGrabEvent = null;
                 return;
             }
             this.rightGrabHandler = () => {
-                if (!this.enableRightGrabTrigger) {
+                if (!this.enableRightPalmTapTrigger) {
                     return;
                 }
+                print("[ASRQueryController] Right Palm Tap (Right Index -> Left Palm) detected.");
                 this.triggerVoiceCaptureFromGesture("right");
             };
             this.rightGrabBinding = this.rightGrabEvent.add(this.rightGrabHandler);
@@ -273,19 +275,20 @@ let ASRQueryController = (() => {
             if (this.leftGrabHandler) {
                 return;
             }
-            if (!this.enableLeftGrabTrigger) {
+            if (!this.enableLeftPalmTapTrigger) {
                 return;
             }
-            this.leftGrabEvent = this.gestureModule.getGrabBeginEvent(this.gestureHandType.Left);
+            this.leftGrabEvent = this.gestureModule.getPalmTapDownEvent(this.gestureHandType.Left);
             if (!this.leftGrabEvent || !this.leftGrabEvent.add) {
-                print("[ASRQueryController] Failed to subscribe to left grab event.");
+                print("[ASRQueryController] Failed to subscribe to left palm tap event.");
                 this.leftGrabEvent = null;
                 return;
             }
             this.leftGrabHandler = () => {
-                if (!this.enableLeftGrabTrigger) {
+                if (!this.enableLeftPalmTapTrigger) {
                     return;
                 }
+                print("[ASRQueryController] Left Palm Tap (Left Index -> Right Palm) detected.");
                 this.triggerVoiceCaptureFromGesture("left");
             };
             this.leftGrabBinding = this.leftGrabEvent.add(this.leftGrabHandler);

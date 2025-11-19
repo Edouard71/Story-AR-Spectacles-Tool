@@ -14,8 +14,8 @@ function checkUndefined(property, showIfData) {
 }
 // @input AssignableType button
 // @input Component.RenderMeshVisual activityRenderMesh
-// @input bool enableRightGrabTrigger
-// @input bool enableLeftGrabTrigger
+// @input bool enableRightPalmTapTrigger
+// @input bool enableLeftPalmTapTrigger
 if (!global.BaseScriptComponent) {
     function BaseScriptComponent() {}
     global.BaseScriptComponent = BaseScriptComponent;
@@ -32,8 +32,8 @@ let awakeEvent = script.createEvent("OnAwakeEvent");
 awakeEvent.bind(() => {
     checkUndefined("button", []);
     checkUndefined("activityRenderMesh", []);
-    checkUndefined("enableRightGrabTrigger", []);
-    checkUndefined("enableLeftGrabTrigger", []);
+    checkUndefined("enableRightPalmTapTrigger", []);
+    checkUndefined("enableLeftPalmTapTrigger", []);
     if (script.onAwake) {
        script.onAwake();
     }
