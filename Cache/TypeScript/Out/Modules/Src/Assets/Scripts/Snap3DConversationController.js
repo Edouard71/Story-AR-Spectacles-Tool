@@ -212,7 +212,7 @@ let Snap3DConversationController = (() => {
         }
         initASR() {
             const options = AsrModule.AsrTranscriptionOptions.create();
-            options.silenceUntilTerminationMs = 1200;
+            options.silenceUntilTerminationMs = 4000;
             options.mode = AsrModule.AsrMode.Balanced;
             options.onTranscriptionUpdateEvent.add((e) => this.onTranscriptionUpdate(e));
             options.onTranscriptionErrorEvent.add((e) => this.onTranscriptionError(e));

@@ -1,5 +1,7 @@
 PinnedEntities:
   type: uuids
   value:
-    size: 0
+    size: 1
+    values:
+      - 7fb611fa-b7c5-49b9-a152-9b54bcc50d10
   options: 4

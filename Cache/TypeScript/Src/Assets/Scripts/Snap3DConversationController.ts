@@ -176,7 +176,7 @@ export class Snap3DConversationController extends BaseScriptComponent {
 
   private initASR() {
     const options = AsrModule.AsrTranscriptionOptions.create();
-    options.silenceUntilTerminationMs = 1200;
+    options.silenceUntilTerminationMs = 4000;
     options.mode = AsrModule.AsrMode.Balanced;
     options.onTranscriptionUpdateEvent.add((e: any) => this.onTranscriptionUpdate(e));
     options.onTranscriptionErrorEvent.add((e: any) => this.onTranscriptionError(e));

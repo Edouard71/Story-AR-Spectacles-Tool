@@ -203,7 +203,7 @@ export class Snap3DInteractable extends BaseScriptComponent {
     model: "gpt-4o-mini-tts", // lightweight, responsive
     input: text,
     voice: "alloy",           // other valid voices: echo, fable, nova, shimmer, etc.
-    response_format: "wav",   // Lens Studio audio pipeline friendly
+    response_format: "mp3",   // Lens Studio audio pipeline friendly
     speed: 1.0,               // optional, 1.0 = normal speed
     };
 
