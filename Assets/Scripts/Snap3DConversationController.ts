@@ -278,7 +278,8 @@ private spawnNPC(prompt: string = "Friendly robot with headphones") {
         }
 
         // 🧩 Grab the NPC object from factory root
-        const npcObj = this.snap3DFactoryObj.getChild(0);
+        const childCount = this.snap3DFactoryObj.getChildrenCount();
+        const npcObj = this.snap3DFactoryObj.getChild(childCount-1);
         if (!npcObj) {
           print("❌ No child found under factory object after spawn");
           return;
@@ -293,9 +294,13 @@ private spawnNPC(prompt: string = "Friendly robot with headphones") {
 
         // 💾 Store + configure
         this.activeNPC = npcComp;
+        this.activeNPC.setNetworkId(`SharedNPC`);
+        this.activeNPC.initializeSync();
+
         this.activeNPC.setPrompt(prompt);
         this.activeNPC.setSpeechBubble("👋 Hello, I'm your AI NPC!");
-        
+        this.activeNPC.startTransformSync();
+
         const npcTransform = npcObj.getTransform();
         this.npcPositionProp.setPendingValue(npcTransform.getWorldPosition());
         this.npcRotationProp.setPendingValue(npcTransform.getWorldRotation());
@@ -349,10 +354,11 @@ private spawnNPC(prompt: string = "Friendly robot with headphones") {
 
     // Configure NPC
     this.activeNPC = npcComp;
+    this.activeNPC.setNetworkId(`SharedNPC`);       // 🔑 SYNC ID
+    this.activeNPC.initializeSync();               // 📡 Create SyncEntity
+    this.activeNPC.loadFromURL(assetURL);          // ⬇️ Load model
     this.activeNPC.setPrompt(prompt);
-    this.activeNPC.loadFromURL(assetURL);
     this.activeNPC.setSpeechBubble("👋 Synced NPC joined!");
-    //this.activeNPC.setInteractionEnabled(false);
 
     return npcObj;
   }
