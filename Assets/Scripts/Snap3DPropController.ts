@@ -184,10 +184,8 @@ export class Snap3DPropController extends BaseScriptComponent {
         propComp.initializeSync();
         propComp.setPrompt(prompt);
         propComp.setSpeechBubble(`✨ Prop ${propId}`);
+        propComp.setInitialTransform();
         propComp.startTransformSync();
-    
-        const offset = new vec3(Math.random() * 20 - 10, 0, Math.random() * 20 - 10);
-        propObj.getTransform().setWorldPosition(offset);
 
         propAssetURL.setPendingValue(assetURL);
         propPrompt.setPendingValue(prompt);

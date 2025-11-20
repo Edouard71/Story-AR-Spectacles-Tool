@@ -298,13 +298,15 @@ private spawnNPC(prompt: string = "Friendly robot with headphones") {
         this.activeNPC.setNetworkId(`SharedNPC`);
         this.activeNPC.initializeSync();
         this.activeNPC.setPrompt(prompt);
+        this.activeNPC.setInitialTransform();
         this.activeNPC.setSpeechBubble("👋 Hello, I'm your AI NPC!");
-        this.activeNPC.startTransformSync();
-        
+
         const npcTransform = npcObj.getTransform();
         this.npcPositionProp.setPendingValue(npcTransform.getWorldPosition());
         this.npcRotationProp.setPendingValue(npcTransform.getWorldRotation());
 
+        this.activeNPC.startTransformSync();
+   
         // 🗣️ Start voice listening
         this.initASR();
 

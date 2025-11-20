@@ -115,6 +115,14 @@ let Snap3DInteractable = (() => {
             // ensure text fields are hidden initially
             this.speechBubbleDisplay.enabled = false;
         }
+        setInitialTransform() {
+            const t = this.modelParent.getTransform();
+            this.syncEntity.sendEvent("npcTransformUpdate", {
+                pos: t.getWorldPosition(),
+                rot: t.getWorldRotation(),
+                scale: t.getWorldScale(),
+            }, true);
+        }
         //----------------------------------------------------------------------
         // SYNC SETUP — must be called manually after setNetworkId()
         //----------------------------------------------------------------------

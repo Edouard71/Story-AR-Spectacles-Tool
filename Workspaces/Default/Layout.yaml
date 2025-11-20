@@ -4,39 +4,53 @@ dock:
     items:
       - items:
           - items:
-              - persistentName: Snap.Plugin.Gui.SceneHierarchyEditor
-                Uuid: 6778142c-0629-4c2a-afc3-92a65ce29e1a
+              - items:
+                  - items:
+                      - persistentName: Snap.Plugin.Gui.SceneHierarchyEditor
+                        Uuid: 6778142c-0629-4c2a-afc3-92a65ce29e1a
+                    type: section
+                    current: 0
+                  - items:
+                      - persistentName: Snap.Plugin.Gui.AssetBrowser
+                        Uuid: cd11ace2-8507-4965-a068-d85c26031a6b
+                    type: section
+                    current: 0
+                sizes:
+                  - 595
+                  - 261
+                type: splitter
+                orientation: vertical
+              - items:
+                  - persistentName: Snap.Plugin.Gui.InspectorPanel
+                    Uuid: 780d9164-e681-4de1-b586-5213ed5523b9
+                  - persistentName: Snap.Plugin.Gui.PreviewPanel
+                    Uuid: 3f360e8e-3c1f-433b-a798-eb357c79ae0c
+                type: section
+                current: 1
+              - items:
+                  - persistentName: Snap.Plugin.Gui.PreviewPanel
+                    Uuid: 1c19e258-486f-4733-9f21-fc3b4fb7f3f3
+                type: section
+                current: 0
+            sizes:
+              - 347
+              - 658
+              - 691
+            type: splitter
+            orientation: horizontal
+          - items:
+              - persistentName: Snap.Plugin.Gui.LoggerPanel
+                Uuid: 81de965d-0c94-4d28-82cf-901740003a1f
+              - persistentName: Snap.Plugin.Gui.ConnectedLensMonitorPanel
+                Uuid: 250ddede-5812-4304-a923-0b805dffd647
             type: section
             current: 0
-          - items:
-              - persistentName: Snap.Plugin.Gui.SceneEditor
-                Uuid: a14d85d7-9a15-42a6-913e-3f24dea267c2
-              - persistentName: Snap.Plugin.AssistantAI.Panel
-                Uuid: df91b2cf-37e1-401c-83fc-3d9f83343e71
-            type: section
-            current: 0
-          - items:
-              - persistentName: Snap.Plugin.Gui.InspectorPanel
-                Uuid: 780d9164-e681-4de1-b586-5213ed5523b9
-              - persistentName: Snap.Plugin.Gui.PreviewPanel
-                Uuid: b9c4c486-8d47-41f1-b7cf-2a9a6d77fbd9
-            type: section
-            current: 1
         sizes:
-          - 658
-          - 275
-          - 523
+          - 859
+          - 155
         type: splitter
-        orientation: horizontal
-      - items:
-          - persistentName: Snap.Plugin.Gui.LoggerPanel
-            Uuid: 81de965d-0c94-4d28-82cf-901740003a1f
-          - persistentName: Snap.Plugin.Gui.ConnectedLensMonitorPanel
-            Uuid: 250ddede-5812-4304-a923-0b805dffd647
-        type: section
-        current: 0
+        orientation: vertical
     sizes:
-      - 585
-      - 280
+      - 1702
     type: splitter
-    orientation: vertical
+    orientation: horizontal

@@ -62,6 +62,15 @@ export class Snap3DInteractable extends BaseScriptComponent {
     this.speechBubbleDisplay.enabled = false;
   }
 
+  public setInitialTransform() {
+    const t = this.modelParent.getTransform();
+    this.syncEntity.sendEvent("npcTransformUpdate", {
+      pos: t.getWorldPosition(),
+      rot: t.getWorldRotation(),
+      scale: t.getWorldScale(),
+    }, true);
+  }
+
  
   //----------------------------------------------------------------------
   // SYNC SETUP — must be called manually after setNetworkId()
@@ -87,6 +96,7 @@ export class Snap3DInteractable extends BaseScriptComponent {
         if (!data) return;
 
         const t = this.modelParent.getTransform();
+      
         const newPos = vec3.lerp(t.getWorldPosition(), data.pos, 0.25);
         const newRot = quat.slerp(t.getWorldRotation(), data.rot, 0.25);
         t.setWorldPosition(newPos);
