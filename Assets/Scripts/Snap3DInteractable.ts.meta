@@ -28,6 +28,7 @@
   ScriptInputsHidden:
     audio: false
     colliderObj: false
+    conversationControllerObj: false
     displayPlate: false
     img: false
     internet: false
@@ -57,6 +58,7 @@
       speechBubbleDisplay: !<reference.Text> 00000000-0000-0000-0000-000000000000
       remoteMediaModule: !<reference.RemoteMediaModule> 00000000-0000-0000-0000-000000000000
       internet: !<reference.InternetModule> 00000000-0000-0000-0000-000000000000
+      conversationControllerObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -72,3 +74,4 @@
     - // @input Component.Text speechBubbleDisplay
     - // @input Asset.RemoteMediaModule remoteMediaModule
     - // @input Asset.InternetModule internet
+    - // @input SceneObject conversationControllerObj

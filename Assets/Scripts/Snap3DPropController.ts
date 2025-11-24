@@ -7,6 +7,7 @@ import { SyncEntity } from "SpectaclesSyncKit.lspkg/Core/SyncEntity";
 import { StorageProperty } from "SpectaclesSyncKit.lspkg/Core/StorageProperty";
 import { StoragePropertySet } from "SpectaclesSyncKit.lspkg/Core/StoragePropertySet";
 
+
 @component
 export class Snap3DPropController extends BaseScriptComponent {
   @input snap3DFactoryObj: SceneObject;
@@ -174,8 +175,11 @@ export class Snap3DPropController extends BaseScriptComponent {
         return;
       }
 
-      const propComp = propObj.getComponent(Snap3DInteractable.getTypeName()) as Snap3DInteractable;
+      propObj.getTransform().setWorldPosition(vec3.zero());
+    
 
+      const propComp = propObj.getComponent(Snap3DInteractable.getTypeName()) as Snap3DInteractable;
+      
       if (!propComp) {
         print("❌ Missing Snap3DInteractable on new prop");
         return;
@@ -259,7 +263,12 @@ export class Snap3DPropController extends BaseScriptComponent {
     print(`🌍 Audience spawning remote prop: ${propId}`);
 
     const propObj = this.propPrefab.instantiate(this.snap3DFactoryObj);
+  
+    propObj.getTransform().setWorldPosition(vec3.zero());
+    
+
     const propComp = propObj.getComponent(Snap3DInteractable.getTypeName()) as Snap3DInteractable;
+
     propComp.setNetworkId(`SharedProp_${propId}`);
     print(` SPAWNING REMOTE SharedProp_${propId}`)
     propComp.initializeSync(); 

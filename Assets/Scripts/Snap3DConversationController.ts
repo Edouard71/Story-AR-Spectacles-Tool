@@ -33,7 +33,7 @@ export class Snap3DConversationController extends BaseScriptComponent {
 
 
   private isSyncReady: boolean = false;
-  private isHost: boolean; 
+  public isHost: boolean; 
   private role: string;
   //----------------------------------------------------------------------
   // LIFECYCLE
@@ -176,7 +176,7 @@ export class Snap3DConversationController extends BaseScriptComponent {
 
   private initASR() {
     const options = AsrModule.AsrTranscriptionOptions.create();
-    options.silenceUntilTerminationMs = 4000;
+    options.silenceUntilTerminationMs = 2500;
     options.mode = AsrModule.AsrMode.Balanced;
     options.onTranscriptionUpdateEvent.add((e: any) => this.onTranscriptionUpdate(e));
     options.onTranscriptionErrorEvent.add((e: any) => this.onTranscriptionError(e));
@@ -229,6 +229,11 @@ export class Snap3DConversationController extends BaseScriptComponent {
       return;
     }
 
+    if (this.asrModule) {
+      this.asrModule.stopTranscribing();
+      print("🔇 Stopped ASR while NPC speaks");
+    }
+
 
     this.activeNPC.playDialogue(text);
 
@@ -236,13 +241,23 @@ export class Snap3DConversationController extends BaseScriptComponent {
       this.activeNPC.broadcastSpeech(text);
     }
 
-    this.restartListening();
+    //this.restartListening();
   }
 
   public restartListening() {
     this.isProcessing = false;
+
+    // ❗ CREATE NEW OPTIONS — NOT REUSE OLD ONE
+    const options = AsrModule.AsrTranscriptionOptions.create();
+    options.silenceUntilTerminationMs = 2500;
+    options.mode = AsrModule.AsrMode.Balanced;
+    options.onTranscriptionUpdateEvent.add((e: any) => this.onTranscriptionUpdate(e));
+    options.onTranscriptionErrorEvent.add((e: any) => this.onTranscriptionError(e));
+
+    this.asrOptions = options;
     this.asrModule.startTranscribing(this.asrOptions);
-    print("Listening...");
+
+    print("🎧 ASR Restarted & ready!");
   }
 
 
@@ -285,6 +300,8 @@ private spawnNPC(prompt: string = "Friendly robot with headphones") {
           print("❌ No child found under factory object after spawn");
           return;
         }
+
+        npcObj.getTransform().setWorldPosition(vec3.zero());
 
         // 🔗 Get Snap3DInteractable component
         const npcComp = npcObj.getComponent(Snap3DInteractable.getTypeName());
@@ -341,11 +358,14 @@ private spawnNPC(prompt: string = "Friendly robot with headphones") {
     // Instantiate from prefab
     const parent = this.snap3DFactoryObj || this.sceneObject;
     const npcObj = this.npcPrefab ? this.npcPrefab.instantiate(parent) : null;
+    
 
     if (!npcObj) {
       print("❌ Failed to instantiate NPC prefab — check inspector reference");
       return;
     }
+
+    npcObj.getTransform().setWorldPosition(vec3.zero());
 
     // Get component (works even if nested)
     const npcComp = npcObj.getComponent(Snap3DInteractable.getTypeName());

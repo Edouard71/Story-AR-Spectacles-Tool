@@ -1,9 +1,8 @@
 CollapsedEntities:
   type: stringset
   value:
-    size: 1001
+    size: 990
     values:
-      - ""
       - Base.png
       - Converse.js
       - Internet Module.internetModule
@@ -38,14 +37,11 @@ CollapsedEntities:
       - Prefabs
       - Prefabs/Snap3DInteractable.prefab
       - Prefabs/VoiceInput.prefab
-      - RemoteServiceGateway.lspkg
       - RemoteServiceGateway.lspkg/Helpers
       - RemoteServiceGateway.lspkg/Helpers/AudioProcessor.ts
       - RemoteServiceGateway.lspkg/Helpers/DynamicAudioOutput.ts
       - RemoteServiceGateway.lspkg/Helpers/MicrophoneRecorder.ts
       - RemoteServiceGateway.lspkg/Helpers/VideoController.ts
-      - RemoteServiceGateway.lspkg/HostedExternal
-      - RemoteServiceGateway.lspkg/HostedExternal/Examples
       - RemoteServiceGateway.lspkg/HostedExternal/Examples/ExampleGeminiCalls.ts
       - RemoteServiceGateway.lspkg/HostedExternal/Examples/ExampleGeminiLive.ts
       - RemoteServiceGateway.lspkg/HostedExternal/Examples/ExampleImagenCalls.ts
@@ -115,7 +111,6 @@ CollapsedEntities:
       - Render/Echopark.hdr/Specular
       - Render/Render Target.renderTarget
       - Scene.scene
-      - Scripts
       - Scripts/APIKeyHint.ts
       - Scripts/ASRQueryController.ts
       - Scripts/GeminiAssistant.ts
@@ -555,7 +550,6 @@ CollapsedEntities:
       - SpectaclesInteractionKit.lspkg/VersionNumber.ts
       - SpectaclesInteractionKit.lspkg/package.native
       - SpectaclesInteractionKit.lspkg/tsconfig.json
-      - SpectaclesSyncKit 2.lspkg
       - SpectaclesSyncKit 2.lspkg/Assets
       - SpectaclesSyncKit 2.lspkg/Assets/Animations
       - SpectaclesSyncKit 2.lspkg/Assets/Animations/Scene.animationAsset
@@ -570,7 +564,6 @@ CollapsedEntities:
       - SpectaclesSyncKit 2.lspkg/Assets/Shaders
       - SpectaclesSyncKit 2.lspkg/Assets/Shaders/Arrow.ss_graph
       - SpectaclesSyncKit 2.lspkg/Assets/Shaders/Checkmark.ss_graph
-      - SpectaclesSyncKit 2.lspkg/Components
       - SpectaclesSyncKit 2.lspkg/Components/Instantiator.ts
       - SpectaclesSyncKit 2.lspkg/Components/SyncHelpers
       - SpectaclesSyncKit 2.lspkg/Components/SyncHelpers/DisplayStorageProperty.ts
@@ -972,8 +965,6 @@ CollapsedEntities:
       - SpectaclesUIKit.lspkg/package.native
       - SpectaclesUIKit.lspkg/package_dependencies.json
       - Sphere.mesh
-      - Visuals
-      - Visuals/AI Visual
       - Visuals/AI Visual/Animations
       - Visuals/AI Visual/Animations/BaseLayer.animationMixerLayer
       - Visuals/AI Visual/Animations/Constraint_rotation_45.animationLayer
@@ -990,14 +981,12 @@ CollapsedEntities:
       - Visuals/AI Visual/Textures/purple_halfcolor.png
       - Visuals/AI Visual/Textures/yellow_alt.png
       - Visuals/AI Visual/Textures/yellow_halfcolor.png
-      - Visuals/ActivityIndicator
       - Visuals/ActivityIndicator/ActivityIndicator.mat
       - Visuals/ActivityIndicator/ActivityIndicator.ss_graph
       - Visuals/CloseIcon.mat
       - Visuals/Image.mat
       - Visuals/MicIcon.mat
       - Visuals/Plane.mesh
-      - Visuals/Textures
       - Visuals/Textures/Image.mat
       - Visuals/Textures/Microphone.png
       - Visuals/Textures/NoInternetAlert.png

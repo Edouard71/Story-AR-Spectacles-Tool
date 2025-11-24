@@ -212,7 +212,7 @@ let Snap3DConversationController = (() => {
         }
         initASR() {
             const options = AsrModule.AsrTranscriptionOptions.create();
-            options.silenceUntilTerminationMs = 4000;
+            options.silenceUntilTerminationMs = 2500;
             options.mode = AsrModule.AsrMode.Balanced;
             options.onTranscriptionUpdateEvent.add((e) => this.onTranscriptionUpdate(e));
             options.onTranscriptionErrorEvent.add((e) => this.onTranscriptionError(e));
@@ -260,16 +260,27 @@ let Snap3DConversationController = (() => {
                 print("NPC not ready yet");
                 return;
             }
+            if (this.asrModule) {
+                this.asrModule.stopTranscribing();
+                print("🔇 Stopped ASR while NPC speaks");
+            }
             this.activeNPC.playDialogue(text);
             if (this.isHost || this.role === "Singleplayer") {
                 this.activeNPC.broadcastSpeech(text);
             }
-            this.restartListening();
+            //this.restartListening();
         }
         restartListening() {
             this.isProcessing = false;
+            // ❗ CREATE NEW OPTIONS — NOT REUSE OLD ONE
+            const options = AsrModule.AsrTranscriptionOptions.create();
+            options.silenceUntilTerminationMs = 2500;
+            options.mode = AsrModule.AsrMode.Balanced;
+            options.onTranscriptionUpdateEvent.add((e) => this.onTranscriptionUpdate(e));
+            options.onTranscriptionErrorEvent.add((e) => this.onTranscriptionError(e));
+            this.asrOptions = options;
             this.asrModule.startTranscribing(this.asrOptions);
-            print("Listening...");
+            print("🎧 ASR Restarted & ready!");
         }
         //----------------------------------------------------------------------
         // NPC SPAWN
@@ -304,6 +315,7 @@ let Snap3DConversationController = (() => {
                         print("❌ No child found under factory object after spawn");
                         return;
                     }
+                    npcObj.getTransform().setWorldPosition(vec3.zero());
                     // 🔗 Get Snap3DInteractable component
                     const npcComp = npcObj.getComponent(Snap3DInteractable_1.Snap3DInteractable.getTypeName());
                     if (!npcComp) {
@@ -355,6 +367,7 @@ let Snap3DConversationController = (() => {
                 print("❌ Failed to instantiate NPC prefab — check inspector reference");
                 return;
             }
+            npcObj.getTransform().setWorldPosition(vec3.zero());
             // Get component (works even if nested)
             const npcComp = npcObj.getComponent(Snap3DInteractable_1.Snap3DInteractable.getTypeName());
             if (!npcComp) {

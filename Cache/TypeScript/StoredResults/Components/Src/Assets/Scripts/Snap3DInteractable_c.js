@@ -23,6 +23,7 @@ function checkUndefined(property, showIfData) {
 // @input Component.Text speechBubbleDisplay
 // @input Asset.RemoteMediaModule remoteMediaModule
 // @input Asset.InternetModule internet
+// @input SceneObject conversationControllerObj
 if (!global.BaseScriptComponent) {
     function BaseScriptComponent() {}
     global.BaseScriptComponent = BaseScriptComponent;
@@ -48,6 +49,7 @@ awakeEvent.bind(() => {
     checkUndefined("speechBubbleDisplay", []);
     checkUndefined("remoteMediaModule", []);
     checkUndefined("internet", []);
+    checkUndefined("conversationControllerObj", []);
     if (script.onAwake) {
        script.onAwake();
     }

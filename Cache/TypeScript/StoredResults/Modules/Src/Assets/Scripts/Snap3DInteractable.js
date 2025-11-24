@@ -53,6 +53,7 @@ function component(target) {
 const SyncEntity_1 = require("SpectaclesSyncKit.lspkg/Core/SyncEntity");
 const NetworkIdTools_1 = require("SpectaclesSyncKit.lspkg/Core/NetworkIdTools");
 const NetworkIdType_1 = require("SpectaclesSyncKit.lspkg/Core/NetworkIdType");
+const Snap3DConversationController_1 = require("./Snap3DConversationController");
 const FunctionTimingUtils_1 = require("SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils");
 const OpenAI_1 = require("RemoteServiceGateway.lspkg/HostedExternal/OpenAI");
 let Snap3DInteractable = (() => {
@@ -75,6 +76,7 @@ let Snap3DInteractable = (() => {
             this.speechBubbleDisplay = this.speechBubbleDisplay; // Newly Added Speech Bubble For NPC Dialogue
             this.remoteMediaModule = this.remoteMediaModule;
             this.internet = this.internet;
+            this.conversationControllerObj = this.conversationControllerObj;
             this.tempModel = null;
             this.finalModel = null;
             this.size = 20;
@@ -94,6 +96,7 @@ let Snap3DInteractable = (() => {
             this.speechBubbleDisplay = this.speechBubbleDisplay; // Newly Added Speech Bubble For NPC Dialogue
             this.remoteMediaModule = this.remoteMediaModule;
             this.internet = this.internet;
+            this.conversationControllerObj = this.conversationControllerObj;
             this.tempModel = null;
             this.finalModel = null;
             this.size = 20;
@@ -114,6 +117,7 @@ let Snap3DInteractable = (() => {
             this.img.getTransform().setLocalScale(this.sizeVec);
             // ensure text fields are hidden initially
             this.speechBubbleDisplay.enabled = false;
+            this.conversationCtrl = this.conversationControllerObj.getComponent(Snap3DConversationController_1.Snap3DConversationController.getTypeName());
         }
         setInitialTransform() {
             const t = this.modelParent.getTransform();
@@ -122,6 +126,15 @@ let Snap3DInteractable = (() => {
                 rot: t.getWorldRotation(),
                 scale: t.getWorldScale(),
             }, true);
+        }
+        notifyConversationToListen() {
+            if (this.conversationCtrl.isHost && this.conversationCtrl.activeNPC && this.conversationCtrl.restartListening) {
+                print("🔄 PropController: Restarting NPC Listening");
+                this.conversationCtrl.restartListening();
+            }
+            else {
+                print("⚠️ No ConversationController found, skipping restart.");
+            }
         }
         //----------------------------------------------------------------------
         // SYNC SETUP — must be called manually after setNetworkId()
@@ -246,6 +259,7 @@ let Snap3DInteractable = (() => {
                     this.audio.setOnFinish(() => {
                         print("💬 Dialogue playback finished");
                         this.speechBubbleDisplay.enabled = false;
+                        this.notifyConversationToListen();
                     });
                 }
                 else {

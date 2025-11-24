@@ -349,6 +349,7 @@
     speechBubbleDisplay: true
     remoteMediaModule: true
     internet: true
+    conversationControllerObj: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -364,6 +365,7 @@
       speechBubbleDisplay: !<reference.Text> 00000000-0000-0000-0000-000000000000
       remoteMediaModule: !<reference.RemoteMediaModule> 00000000-0000-0000-0000-000000000000
       internet: !<reference.InternetModule> 00000000-0000-0000-0000-000000000000
+      conversationControllerObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     "":
       {}

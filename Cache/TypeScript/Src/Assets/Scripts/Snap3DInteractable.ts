@@ -1,6 +1,7 @@
 import { SyncEntity } from "SpectaclesSyncKit.lspkg/Core/SyncEntity";
 import { NetworkIdTools } from "SpectaclesSyncKit.lspkg/Core/NetworkIdTools";
 import { NetworkIdType } from "SpectaclesSyncKit.lspkg/Core/NetworkIdType";
+import { Snap3DConversationController } from "./Snap3DConversationController";
 
 import { setTimeout } from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils";
 
@@ -32,6 +33,8 @@ export class Snap3DInteractable extends BaseScriptComponent {
   private remoteMediaModule: RemoteMediaModule;
   @input
   private internet : InternetModule;
+  @input conversationControllerObj: SceneObject;
+
 
   private tempModel: SceneObject = null;
   private finalModel: SceneObject = null;
@@ -43,6 +46,8 @@ export class Snap3DInteractable extends BaseScriptComponent {
   private lastPos: vec3;
   private lastRot: quat;
   private lastScale: vec3;
+  private conversationCtrl: Snap3DConversationController;
+
 
   onAwake() {
     // Clone the image material to avoid modifying the original
@@ -60,6 +65,7 @@ export class Snap3DInteractable extends BaseScriptComponent {
 
     // ensure text fields are hidden initially
     this.speechBubbleDisplay.enabled = false;
+    this.conversationCtrl = this.conversationControllerObj.getComponent(Snap3DConversationController.getTypeName()) as Snap3DConversationController;
   }
 
   public setInitialTransform() {
@@ -71,7 +77,14 @@ export class Snap3DInteractable extends BaseScriptComponent {
     }, true);
   }
 
- 
+ private notifyConversationToListen() {
+  if (this.conversationCtrl.isHost && this.conversationCtrl.activeNPC && this.conversationCtrl.restartListening) {
+    print("🔄 PropController: Restarting NPC Listening");
+    this.conversationCtrl.restartListening();
+  } else {
+    print("⚠️ No ConversationController found, skipping restart.");
+  }
+}
   //----------------------------------------------------------------------
   // SYNC SETUP — must be called manually after setNetworkId()
   //----------------------------------------------------------------------
@@ -228,6 +241,7 @@ export class Snap3DInteractable extends BaseScriptComponent {
         this.audio.setOnFinish(() => {
           print("💬 Dialogue playback finished");
           this.speechBubbleDisplay.enabled = false;
+          this.notifyConversationToListen();
         });
       } else {
         print("⚠️ No AudioComponent found — cannot play sound");
