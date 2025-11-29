@@ -1,7 +1,7 @@
 CollapsedEntities:
   type: stringset
   value:
-    size: 990
+    size: 987
     values:
       - Base.png
       - Converse.js
@@ -37,6 +37,7 @@ CollapsedEntities:
       - Prefabs
       - Prefabs/Snap3DInteractable.prefab
       - Prefabs/VoiceInput.prefab
+      - RemoteServiceGateway.lspkg
       - RemoteServiceGateway.lspkg/Helpers
       - RemoteServiceGateway.lspkg/Helpers/AudioProcessor.ts
       - RemoteServiceGateway.lspkg/Helpers/DynamicAudioOutput.ts
@@ -111,6 +112,7 @@ CollapsedEntities:
       - Render/Echopark.hdr/Specular
       - Render/Render Target.renderTarget
       - Scene.scene
+      - Scripts
       - Scripts/APIKeyHint.ts
       - Scripts/ASRQueryController.ts
       - Scripts/GeminiAssistant.ts
@@ -287,7 +289,6 @@ CollapsedEntities:
       - SpectaclesInteractionKit.lspkg/Assets/Textures/SIKContainerExampleImage.jpg
       - SpectaclesInteractionKit.lspkg/Assets/Textures/SIKLogo.png
       - SpectaclesInteractionKit.lspkg/Assets/Textures/ScrollBarRectangle.png
-      - SpectaclesInteractionKit.lspkg/Components
       - SpectaclesInteractionKit.lspkg/Components/Helpers
       - SpectaclesInteractionKit.lspkg/Components/Helpers/ButtonFeedback.ts
       - SpectaclesInteractionKit.lspkg/Components/Helpers/CapsuleMeshCustomizer.ts
@@ -300,7 +301,6 @@ CollapsedEntities:
       - SpectaclesInteractionKit.lspkg/Components/Helpers/ScrollBarFeedback.ts
       - SpectaclesInteractionKit.lspkg/Components/Helpers/SliderFeedback.ts
       - SpectaclesInteractionKit.lspkg/Components/Helpers/ToggleFeedback.ts
-      - SpectaclesInteractionKit.lspkg/Components/Interaction
       - SpectaclesInteractionKit.lspkg/Components/Interaction/Billboard
       - SpectaclesInteractionKit.lspkg/Components/Interaction/Billboard/Billboard.ts
       - SpectaclesInteractionKit.lspkg/Components/Interaction/Billboard/BillboardController.ts
@@ -314,9 +314,7 @@ CollapsedEntities:
       - SpectaclesInteractionKit.lspkg/Components/Interaction/Headlock/HeadlockController.ts
       - SpectaclesInteractionKit.lspkg/Components/Interaction/Headlock/HeadlockRotationCalculator.ts
       - SpectaclesInteractionKit.lspkg/Components/Interaction/Headlock/HeadlockTranslationCalculator.ts
-      - SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable
       - SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable.ts
-      - SpectaclesInteractionKit.lspkg/Components/Interaction/InteractableManipulation
       - SpectaclesInteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation.ts
       - SpectaclesInteractionKit.lspkg/Components/Interaction/InteractionPlane
       - SpectaclesInteractionKit.lspkg/Components/Interaction/InteractionPlane/InteractionPlane.ts
@@ -343,7 +341,6 @@ CollapsedEntities:
       - SpectaclesInteractionKit.lspkg/Components/Interaction/InteractorLineVisual/InteractorLineVisual.ts
       - SpectaclesInteractionKit.lspkg/Components/Interaction/InteractorRayVisual
       - SpectaclesInteractionKit.lspkg/Components/Interaction/InteractorRayVisual/InteractorRayVisual.ts
-      - SpectaclesInteractionKit.lspkg/Components/UI
       - SpectaclesInteractionKit.lspkg/Components/UI/ContainerFrame
       - SpectaclesInteractionKit.lspkg/Components/UI/ContainerFrame/ContainerFrame.ts
       - SpectaclesInteractionKit.lspkg/Components/UI/ContainerFrame/Materials
@@ -407,7 +404,6 @@ CollapsedEntities:
       - SpectaclesInteractionKit.lspkg/Components/UI/Slider/Slider.ts
       - SpectaclesInteractionKit.lspkg/Components/UI/ToggleButton
       - SpectaclesInteractionKit.lspkg/Components/UI/ToggleButton/ToggleButton.ts
-      - SpectaclesInteractionKit.lspkg/Core
       - SpectaclesInteractionKit.lspkg/Core/ConfigurationValidator
       - SpectaclesInteractionKit.lspkg/Core/ConfigurationValidator/ConfigurationValidator.ts
       - SpectaclesInteractionKit.lspkg/Core/HandInteractor
@@ -550,6 +546,7 @@ CollapsedEntities:
       - SpectaclesInteractionKit.lspkg/VersionNumber.ts
       - SpectaclesInteractionKit.lspkg/package.native
       - SpectaclesInteractionKit.lspkg/tsconfig.json
+      - SpectaclesSyncKit 2.lspkg
       - SpectaclesSyncKit 2.lspkg/Assets
       - SpectaclesSyncKit 2.lspkg/Assets/Animations
       - SpectaclesSyncKit 2.lspkg/Assets/Animations/Scene.animationAsset

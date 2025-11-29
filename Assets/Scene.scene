@@ -483,7 +483,7 @@
   ScriptInputs:
     "":
       snap3DFactoryObj: !<reference.SceneObject> e2eb5afd-edf7-4812-9570-c323c00660d9
-      propPrefab: !<reference.ObjectPrefab> 1adffe25-80d7-4e09-b9fe-652d22a832f6
+      propPrefab: !<reference.ObjectPrefab> 6dcc2f64-98c2-4264-99a2-cf4980592664
       propGenerationUI: !<reference.SceneObject> 7cd0f19c-c335-4b6f-a7a5-747e47d19c5c
       conversationControllerObj: !<reference.SceneObject> d1252c29-bbe1-4877-859a-39f44553f545
   ScriptTypes:
@@ -926,7 +926,7 @@
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 90.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
@@ -2649,7 +2649,7 @@
       snap3DFactoryObj: !<reference.SceneObject> e2eb5afd-edf7-4812-9570-c323c00660d9
       npcGenerationUI: !<reference.SceneObject> 2dbeb390-f289-47f5-987a-f269a6e0cc88
       instantiator: !<MappingBased.AssignableType> 98dabbb7-81f3-4bc3-9d88-c8a81a20653d
-      npcPrefab: !<reference.ObjectPrefab> 1adffe25-80d7-4e09-b9fe-652d22a832f6
+      npcPrefab: !<reference.ObjectPrefab> 6dcc2f64-98c2-4264-99a2-cf4980592664
   ScriptTypes:
     "":
       {}
@@ -2671,7 +2671,7 @@
       refineMesh: false
       useVertexColor: false
       runOnTap: false
-      snap3DInteractablePrefab: !<reference.ObjectPrefab> 1adffe25-80d7-4e09-b9fe-652d22a832f6
+      snap3DInteractablePrefab: !<reference.ObjectPrefab> 6dcc2f64-98c2-4264-99a2-cf4980592664
   ScriptTypes:
     "":
       {}
@@ -3758,12 +3758,12 @@
   MeshShadowMode: None
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
-  Text: Version 1.0
+  Text: "Created By: Rhiaan Jhaveri & Kevin Edouard"
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
   SizeToFit: false
-  FontSize: 120
+  FontSize: 102
   Font: !<reference> 00000000-0000-0000-0000-000000000000
   LayoutRect:
     left: -7.500000
@@ -4112,13 +4112,13 @@
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
   SizeToFit: false
-  FontSize: 280
+  FontSize: 190
   Font: !<reference> 00000000-0000-0000-0000-000000000000
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
     right: 7.500000
-    top: 2.250000
+    top: 5.250000
   OverflowVertical: Overflow
   OverflowHorizontal: Overflow
   Fill: !<TextFill>
@@ -4787,6 +4787,7 @@
     _enableXTranslation: true
     _enableYTranslation: true
     _enableZTranslation: true
+    _rotationAxis: true
     isSynced: true
   ScriptTypesDefault:
     {}
@@ -4812,7 +4813,7 @@
       _enableYTranslation: true
       _enableZTranslation: true
       showRotationProperties: true
-      _rotationAxis: !<string> Y
+      _rotationAxis: All
       isSynced: false
   ScriptTypes:
     "":
@@ -6375,27 +6376,27 @@
     - !<own> 83116b09-01f5-4b8a-bf78-96b2ea22d2bd
 - !<SceneObject/b570b2c7-7ce4-447a-adba-ca35c05a76bd>
   PrefabRemaps:
-    - 018d855e-fe50-43de-ad42-a4b4e87dde41: bc83d86f-db04-40d9-6740-59df0cf13580
-    - 0533b8bf-a5a7-43d8-a5ff-ac4359f93abf: 74fd3a91-2238-4da4-40a4-f2bac55c4491
-    - 11cd88c7-327f-46e3-82a9-86c6f6a4a461: f5019946-db40-43de-4ed5-934f0d099b68
-    - 1ead5ad1-8a31-4968-a180-44ca118005d3: e12e3a03-d168-4542-5869-03da732ba461
-    - 2095c14c-e6dc-4bc8-bf1a-86fc78b0ff48: 58656e9c-1c6e-4ef9-5a44-a1c3354967cc
-    - 36b4c642-bc68-4e4b-9c85-628870d67ef0: f04c9523-94f1-429e-7002-a51b3e796a8f
-    - 6bcf8615-e140-46f5-bd30-38442a530544: 16d47aff-a2ab-4fe3-6854-7e3ce978c4fb
-    - 7b28540a-e5e1-4090-b26a-b8156a461ed7: fffa6f10-86e6-418e-761a-cbe2b0e87aa9
-    - 7f08797a-cf8f-4762-a0bd-36b6115f29fb: 8fd578af-63fc-4ab5-685d-829d46e5bd26
-    - 8e5a7f57-2477-40e3-a176-9e59b9468a86: 38408c3f-1d13-4705-6160-9412c2126690
-    - b570b2c7-7ce4-447a-adba-ca35c05a76bd: b66ead54-93c7-42e5-5b27-596fffa005c5
-    - bfecd0ce-f1c1-4bba-b690-4e11a676e67a: 0381b836-25b3-4882-6933-c04e30b6b14f
-    - c7296e1a-1311-4a02-b516-9c549443a7a7: 99413cfe-fc92-4c49-4f95-5e0583719ca6
-    - d5ff38e3-6e0f-4f2c-b0a8-8e70514f2aae: 9b9e4e31-7a7d-4c65-5deb-82130cc2a576
-    - e343b995-5277-4b1f-ad05-6b73abfff069: 7c07e36e-f917-4d64-5845-e2450046b4a0
-    - e5fb4165-5c27-49b4-ae80-27f89e2f8213: 1482caef-380d-4e4e-483b-b4d7f860c814
-    - e79bd978-09cf-4226-9383-714dbf92be38: 1970f29b-8df0-4409-46ed-4d1e4fe22f8c
-    - ea32179a-115a-42c6-9bdf-a30f9d0b0aff: 5daac1db-730d-4f9c-7236-d0df83ad4b2c
-    - eb411ad5-509c-4855-be1a-8a127a09a51a: ba3623dd-8b57-4318-44f2-0da035b17b67
-    - f6e7d770-13a3-47ae-bc6a-469a67e98184: f0d5d5c1-3a35-4ea8-557d-8cc95587e314
-    - f9c3a9af-bb95-4f53-bc60-c99605cd7ad1: 22d0ea13-e177-4a02-7889-8fcc8f87f16c
+    - 018d855e-fe50-43de-ad42-a4b4e87dde41: 00151257-d19b-465a-7bb1-823784b46ec5
+    - 0533b8bf-a5a7-43d8-a5ff-ac4359f93abf: e534eb7b-f302-4449-613e-4540d099a905
+    - 11cd88c7-327f-46e3-82a9-86c6f6a4a461: ac279504-d17c-4fe2-5d6c-84e1833f0ebb
+    - 1ead5ad1-8a31-4968-a180-44ca118005d3: d2dd6fa8-6efd-48fb-74f4-572e1e1c249a
+    - 2095c14c-e6dc-4bc8-bf1a-86fc78b0ff48: 5ad79fb1-da0f-4967-491d-a4cc069e5abb
+    - 36b4c642-bc68-4e4b-9c85-628870d67ef0: 3c037596-86b2-4d77-7cc2-bacdda091a7b
+    - 6bcf8615-e140-46f5-bd30-38442a530544: dd3a3a21-d56a-4da9-66b9-d43314194b41
+    - 7b28540a-e5e1-4090-b26a-b8156a461ed7: b3a4babb-2e5e-475a-725d-aa3ab729af6e
+    - 7f08797a-cf8f-4762-a0bd-36b6115f29fb: 0982ea42-c153-4e1a-4a06-a5c139be76a8
+    - 8e5a7f57-2477-40e3-a176-9e59b9468a86: 8cbafc7d-b81b-42eb-557b-30c275fae0a4
+    - b570b2c7-7ce4-447a-adba-ca35c05a76bd: d62f0b20-18df-4096-59b9-670904764ead
+    - bfecd0ce-f1c1-4bba-b690-4e11a676e67a: b0bf3e6b-7bbe-42f0-7811-2194a7e766c0
+    - c7296e1a-1311-4a02-b516-9c549443a7a7: 4faac20a-402e-4992-7989-e0894d5e2d47
+    - d5ff38e3-6e0f-4f2c-b0a8-8e70514f2aae: be5c4500-f122-45cd-53bf-6e74678d3f4d
+    - e343b995-5277-4b1f-ad05-6b73abfff069: 95cf4715-e2d5-4086-65e7-c0d14dcea433
+    - e5fb4165-5c27-49b4-ae80-27f89e2f8213: ed130caf-5756-4448-5994-d37b0e056dca
+    - e79bd978-09cf-4226-9383-714dbf92be38: 36c8de46-9785-4427-5000-b7c7509f178d
+    - ea32179a-115a-42c6-9bdf-a30f9d0b0aff: e1813330-a7fd-43c8-6f13-ccfef485fa79
+    - eb411ad5-509c-4855-be1a-8a127a09a51a: abf85b51-09df-42d9-641a-821e218e4633
+    - f6e7d770-13a3-47ae-bc6a-469a67e98184: 6140c2f9-8f90-4ea3-74f7-c6b3f3bc83ba
+    - f9c3a9af-bb95-4f53-bc60-c99605cd7ad1: 6a9b3701-e14d-4bfa-5699-d3420c6087f3
   Name: Snap3DInteractable
   Enabled: false
   Layers: 1

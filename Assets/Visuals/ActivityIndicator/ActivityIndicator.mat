@@ -58,6 +58,9 @@
     - Port_Position5_N055:
         typeIdx: 1
         value: 1.000000
+    - Port_PrevWorldPosition_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
     - Port_RayDirection_N004:
         typeIdx: 4
         value: {x: 0.000000, y: 1.000000, z: 0.000000}
@@ -91,6 +94,21 @@
     - Tweak_N56:
         typeIdx: 1
         value: 1.000000
+    - correctedIntensity:
+        typeIdx: 1
+        value: 0.000000
+    - intensityTexture:
+        typeIdx: 9
+        value:
+          id: 00000000-0000-0000-0000-000000000000
+          sampler:
+            filteringMode: Trilinear
+            wrapModeU: Repeat
+            wrapModeV: Repeat
+            wrapModeW: Repeat
+            borderColor: {x: 0.000000, y: 0.000000, z: 0.000000, w: 0.000000}
+            mipmaps: false
+          type: Texture2D
   DepthWrite: false
   DepthTest: true
   DepthFunction: LessEqual
@@ -251,7 +269,7 @@
       value: {x: 0.885130, y: 0.888304, z: 0.897826}
     Port_Value0_N079:
       typeIdx: 4
-      value: {x: 1.000000, y: 0.540459, z: 0.000000}
+      value: {x: 0.758206, y: 0.150378, z: 0.952361}
     Port_Value0_N084:
       typeIdx: 4
       value: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -260,7 +278,7 @@
       value: {x: 0.441230, y: 0.457740, z: 0.442237}
     Port_Value1_N079:
       typeIdx: 4
-      value: {x: 1.000000, y: 0.546777, z: 0.203800}
+      value: {x: 0.953017, y: 0.000000, z: 0.139742}
     Port_Value1_N084:
       typeIdx: 4
       value: {x: 0.983368, y: 0.987518, z: 1.000000}
@@ -278,7 +296,7 @@
       value: {x: 0.314382, y: 0.321492, z: 0.324636}
     Port_Value3_N079:
       typeIdx: 4
-      value: {x: 1.000000, y: 0.944915, z: 0.300633}
+      value: {x: 0.991028, y: 0.000000, z: 0.513344}
     Port_Value3_N084:
       typeIdx: 4
       value: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -296,17 +314,17 @@
       value: 0
     Tweak_N23:
       typeIdx: 1
-      value: 2.630000
+      value: 3.300000
     Tweak_N33:
       typeIdx: 1
-      value: 5.990000
+      value: 1.880000
     Tweak_N37:
       typeIdx: 1
-      value: 0.300000
+      value: 0.140000
     Tweak_N38:
       typeIdx: 1
-      value: 0.300000
+      value: 0.973000
     in_out:
       typeIdx: 1
-      value: 1.000000
+      value: 1.130000
   Pass: !<reference> 11ee2b9e-22c2-4138-a11d-abce6d544287

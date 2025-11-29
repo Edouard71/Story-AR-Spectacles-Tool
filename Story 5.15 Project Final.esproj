@@ -13,16 +13,16 @@ metaInfo:
     []
   tags:
     []
-  lensName: AI Playground
+  lensName: StageGen Tool
   lensDescriptors:
-    []
+    - GEN_AI_ICON
   lensApplicability:
     - Front
     - Back
   lensClientCompatibilities:
     - Spectacles
   platformBundlesEnabled: false
-  iconHash: ""
+  iconHash: 4f177e10189cfd0c380a93544add738c
   videoPreviewHash: ""
   fromTemplateName: Spectacles
   fromTemplateUrl: Lens Studio 5.10.0.25052803
