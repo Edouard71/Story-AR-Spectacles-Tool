@@ -14,6 +14,9 @@ function checkUndefined(property, showIfData) {
 }
 // @input SceneObject snap3DFactoryObj
 // @input SceneObject npcGenerationUI
+// @input SceneObject hostOnboardingUI
+// @input SceneObject audienceOnboardUI
+// @input SceneObject spawnPointIndicatorUI
 // @input AssignableType instantiator
 // @input Asset.ObjectPrefab npcPrefab
 if (!global.BaseScriptComponent) {
@@ -32,6 +35,9 @@ let awakeEvent = script.createEvent("OnAwakeEvent");
 awakeEvent.bind(() => {
     checkUndefined("snap3DFactoryObj", []);
     checkUndefined("npcGenerationUI", []);
+    checkUndefined("hostOnboardingUI", []);
+    checkUndefined("audienceOnboardUI", []);
+    checkUndefined("spawnPointIndicatorUI", []);
     checkUndefined("instantiator", []);
     checkUndefined("npcPrefab", []);
     if (script.onAwake) {

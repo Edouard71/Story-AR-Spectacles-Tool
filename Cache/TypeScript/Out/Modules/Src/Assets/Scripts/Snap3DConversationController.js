@@ -70,6 +70,9 @@ let Snap3DConversationController = (() => {
             super();
             this.snap3DFactoryObj = this.snap3DFactoryObj;
             this.npcGenerationUI = this.npcGenerationUI;
+            this.hostOnboardingUI = this.hostOnboardingUI;
+            this.audienceOnboardUI = this.audienceOnboardUI;
+            this.spawnPointIndicatorUI = this.spawnPointIndicatorUI;
             this.instantiator = this.instantiator;
             this.npcPrefab = this.npcPrefab;
             this.conversationHistory = [];
@@ -88,6 +91,9 @@ let Snap3DConversationController = (() => {
             super.__initialize();
             this.snap3DFactoryObj = this.snap3DFactoryObj;
             this.npcGenerationUI = this.npcGenerationUI;
+            this.hostOnboardingUI = this.hostOnboardingUI;
+            this.audienceOnboardUI = this.audienceOnboardUI;
+            this.spawnPointIndicatorUI = this.spawnPointIndicatorUI;
             this.instantiator = this.instantiator;
             this.npcPrefab = this.npcPrefab;
             this.conversationHistory = [];
@@ -185,10 +191,13 @@ let Snap3DConversationController = (() => {
             if (this.npcGenerationUI) {
                 if (this.isHost || this.role === "Singleplayer") {
                     this.npcGenerationUI.enabled = true;
+                    this.hostOnboardingUI.enabled = true;
+                    this.spawnPointIndicatorUI.enabled = true;
                 }
                 else {
                     this.npcGenerationUI.enabled = false;
-                    // Maybe show some audience UI element here
+                    this.hostOnboardingUI.enabled = false;
+                    this.audienceOnboardUI.enabled = true;
                 }
             }
             print(`[ConversationController] Joined as ${this.role}`);

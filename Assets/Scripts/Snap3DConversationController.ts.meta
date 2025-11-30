@@ -26,10 +26,13 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
+    audienceOnboardUI: false
+    hostOnboardingUI: false
     instantiator: false
     npcGenerationUI: false
     npcPrefab: false
     snap3DFactoryObj: false
+    spawnPointIndicatorUI: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -41,6 +44,9 @@
   DefaultScriptInputs:
     - snap3DFactoryObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       npcGenerationUI: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      hostOnboardingUI: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      audienceOnboardUI: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      spawnPointIndicatorUI: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       instantiator: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
       npcPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
@@ -49,5 +55,8 @@
   InputLines:
     - // @input SceneObject snap3DFactoryObj
     - // @input SceneObject npcGenerationUI
+    - // @input SceneObject hostOnboardingUI
+    - // @input SceneObject audienceOnboardUI
+    - // @input SceneObject spawnPointIndicatorUI
     - // @input AssignableType instantiator
     - // @input Asset.ObjectPrefab npcPrefab

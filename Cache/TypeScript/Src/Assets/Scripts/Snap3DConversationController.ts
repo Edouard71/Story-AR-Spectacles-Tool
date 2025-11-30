@@ -13,7 +13,12 @@ const { OpenAI } = require("RemoteServiceGateway.lspkg/HostedExternal/OpenAI");
 @component
 export class Snap3DConversationController extends BaseScriptComponent {
   @input snap3DFactoryObj: SceneObject;
+
   @input npcGenerationUI: SceneObject;
+  @input hostOnboardingUI: SceneObject;
+  @input audienceOnboardUI: SceneObject;
+  @input spawnPointIndicatorUI: SceneObject;
+
   @input instantiator: Instantiator;
   @input npcPrefab: ObjectPrefab;
   
@@ -140,10 +145,12 @@ export class Snap3DConversationController extends BaseScriptComponent {
     if (this.npcGenerationUI) {
       if (this.isHost || this.role === "Singleplayer") {
         this.npcGenerationUI.enabled = true;
-
+        this.hostOnboardingUI.enabled = true;
+        this.spawnPointIndicatorUI.enabled = true;
       } else {
         this.npcGenerationUI.enabled = false;
-        // Maybe show some audience UI element here
+        this.hostOnboardingUI.enabled = false;
+        this.audienceOnboardUI.enabled = true;
       }
     }
 

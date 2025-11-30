@@ -1,10 +1,13 @@
 CollapsedEntities:
   type: stringset
   value:
-    size: 987
+    size: 991
     values:
       - Base.png
       - Converse.js
+      - ImageMaterial 2.mat
+      - ImageMaterial 3.mat
+      - ImageMaterial.mat
       - Internet Module.internetModule
       - LSTween.lspkg
       - LSTween.lspkg/Examples
@@ -32,11 +35,13 @@ CollapsedEntities:
       - LSTween.lspkg/TweenJS/mainGroup.ts
       - LSTween.lspkg/package.native
       - MaterialParams.png
+      - NPC Generation Diagram.png
       - Normal.png
       - PBR.mat
       - Prefabs
       - Prefabs/Snap3DInteractable.prefab
       - Prefabs/VoiceInput.prefab
+      - Prop Generation Diagram.png
       - RemoteServiceGateway.lspkg
       - RemoteServiceGateway.lspkg/Helpers
       - RemoteServiceGateway.lspkg/Helpers/AudioProcessor.ts
@@ -112,7 +117,6 @@ CollapsedEntities:
       - Render/Echopark.hdr/Specular
       - Render/Render Target.renderTarget
       - Scene.scene
-      - Scripts
       - Scripts/APIKeyHint.ts
       - Scripts/ASRQueryController.ts
       - Scripts/GeminiAssistant.ts
@@ -130,7 +134,6 @@ CollapsedEntities:
       - Scripts/SphereController.ts
       - Snap3DHelper.js
       - Snap3DInteractable.prefab
-      - SpectaclesInteractionKit.lspkg
       - SpectaclesInteractionKit.lspkg/Assets
       - SpectaclesInteractionKit.lspkg/Assets/Audio
       - SpectaclesInteractionKit.lspkg/Assets/Audio/HoverAudioTrack.wav
@@ -341,7 +344,6 @@ CollapsedEntities:
       - SpectaclesInteractionKit.lspkg/Components/Interaction/InteractorLineVisual/InteractorLineVisual.ts
       - SpectaclesInteractionKit.lspkg/Components/Interaction/InteractorRayVisual
       - SpectaclesInteractionKit.lspkg/Components/Interaction/InteractorRayVisual/InteractorRayVisual.ts
-      - SpectaclesInteractionKit.lspkg/Components/UI/ContainerFrame
       - SpectaclesInteractionKit.lspkg/Components/UI/ContainerFrame/ContainerFrame.ts
       - SpectaclesInteractionKit.lspkg/Components/UI/ContainerFrame/Materials
       - SpectaclesInteractionKit.lspkg/Components/UI/ContainerFrame/Materials/FrameMaterial.mat
@@ -451,7 +453,6 @@ CollapsedEntities:
       - SpectaclesInteractionKit.lspkg/Core/SyncInteractor/SyncInteractor.ts
       - SpectaclesInteractionKit.lspkg/Decorators
       - SpectaclesInteractionKit.lspkg/Decorators/Singleton.ts
-      - SpectaclesInteractionKit.lspkg/Prefabs
       - SpectaclesInteractionKit.lspkg/Prefabs/ScrollViewListItem.prefab
       - SpectaclesInteractionKit.lspkg/Prefabs/SpectaclesInteractionKit.prefab
       - SpectaclesInteractionKit.lspkg/Providers
@@ -962,6 +963,8 @@ CollapsedEntities:
       - SpectaclesUIKit.lspkg/package.native
       - SpectaclesUIKit.lspkg/package_dependencies.json
       - Sphere.mesh
+      - Visuals
+      - Visuals/AI Visual
       - Visuals/AI Visual/Animations
       - Visuals/AI Visual/Animations/BaseLayer.animationMixerLayer
       - Visuals/AI Visual/Animations/Constraint_rotation_45.animationLayer
@@ -984,6 +987,7 @@ CollapsedEntities:
       - Visuals/Image.mat
       - Visuals/MicIcon.mat
       - Visuals/Plane.mesh
+      - Visuals/Textures
       - Visuals/Textures/Image.mat
       - Visuals/Textures/Microphone.png
       - Visuals/Textures/NoInternetAlert.png
